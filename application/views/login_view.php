@@ -107,7 +107,9 @@
 		</form>
 		<!-- END FORGOT PASSWORD FORM -->
 		<!-- BEGIN REGISTRATION FORM -->
-		<form class="form-vertical register-form" action="index.html" method="post">
+		<?php
+		$attributes = array('class' => 'form-vertical register-form');		
+		echo form_open('login_control/submit',$attributes); ?>
 			<h3 >Sign Up</h3>
 			<p>Enter your personal details below:</p>
 			<div class="control-group">
@@ -432,7 +434,7 @@
 				<button id="register-back-btn" type="button" class="btn">
 				<i class="m-icon-swapleft"></i>  Back
 				</button>
-				<button type="submit" id="register-submit-btn" class="btn green pull-right">
+				<button type="submit" id="register-submit-btn" name="submitForm" value="RegistForm" class="btn green pull-right">
 				Sign Up <i class="m-icon-swapright m-icon-white"></i>
 				</button>            
 			</div>
