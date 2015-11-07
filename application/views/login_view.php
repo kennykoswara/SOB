@@ -2,7 +2,7 @@
 <html>
 <head>
   <title>HansKD - Sign In or Register</title>
-  <link href="<?php echo base_url();?>asset/bootstrap/login_template/assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+  <link href="<?php echo base_url();?>asset/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
   <link href="<?php echo base_url();?>asset/login/css/my_styles.css" rel="stylesheet" type="text/css"/>
 </head>
 <body>
@@ -57,6 +57,7 @@
   </div>
   <hr/>
 
+  <script src="<?php echo base_url();?>asset/js/jquery-2.1.4.min.js" type="text/javascript"></script>
   <script src="<?php echo base_url();?>asset/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
   <script src="<?php echo base_url();?>asset/login/js/my_js.js" type="text/javascript"></script>
 </body>

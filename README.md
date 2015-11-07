@@ -1,2 +1,2 @@
-# SOB
-Synchronize Online Battler Web Game
+# Helper Web
+This is a web that is design to help people help other people

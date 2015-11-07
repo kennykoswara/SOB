@@ -1,14 +1,14 @@
 
 var num;
 var temp=0;
-var speed=10000; /* this is set for 5 seconds, edit value to suit requirements */
+var speed=7000; /* this is set for 7 seconds, edit value to suit requirements */
 var preloads=[];
 
 /* add any number of images here */
 
 preload(
-'image/1.jpg',
-'image/2.png'
+'asset/login/image/1.jpg',
+'asset/login/image/2.png'
 );
 
 function preload(){
@@ -33,7 +33,7 @@ setTimeout(function(){rotateImages()},speed);
 }
 
 if(window.addEventListener){
-window.addEventListener('load',function(){setTimeout(function(){rotateImages()},speed)},false);
+window.addEventListener('load',function(){setTimeout(function(){rotateImages()},0)},false);
 }
 else {
 if(window.attachEvent){
