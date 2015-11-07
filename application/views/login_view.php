@@ -21,6 +21,8 @@
 				</div>
 			</form>
 		</div>
+    <br/>
+    <hr/>
 
 		<div class="container-fluid" style="margin-top: 7em">
 			<div class="col-md-offset-2 col-md-4">
@@ -63,7 +65,6 @@
 				</form>
 			</div>
 		</div>
-  <hr/>
 
 	<script src="<?php echo base_url();?>asset/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
 	<script src="<?php echo base_url();?>asset/login/js/my_js.js" type="text/javascript"></script>
