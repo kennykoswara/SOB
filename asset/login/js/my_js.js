@@ -7,8 +7,8 @@ var preloads=[];
 /* add any number of images here */
 
 preload(
-'image/wallpaper.jpg',
-'image/wallpaper.png'
+'image/1.jpg',
+'image/2.png'
 );
 
 function preload(){
