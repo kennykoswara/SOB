@@ -24,6 +24,23 @@ class login_model extends CI_Model {
 		}
 	}
 	
+	function check_email($email)
+	{
+		$this -> db -> select('id');
+		$this -> db -> from('user_info');
+		$this -> db -> where('email', $email);
+		$this -> db -> limit(1);
+		$query = $this -> db -> get();
+		if($query -> num_rows() == 1)
+		{
+			return $query->result();
+		}
+		else
+		{
+			return false;
+		}
+	}
+	
 	public function add_user()
 	{
 		$data=array(

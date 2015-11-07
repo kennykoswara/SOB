@@ -18,6 +18,7 @@
 						<input type="password" class="form-control input-md" id="password" name="password" placeholder="Password" required="true">
 					</div>
 					<button type="submit" name="submitForm" value="signin" id="signin" class="btn btn-default"><b>Sign In</b></button>
+					<?php echo form_error('password', '<div class="error">', '</div>'); ?>
 				</div>
 			</form>
 		</div>
@@ -48,6 +49,7 @@
 					<div class="row">
 						<div class="form-group">
 							<input type="email" class="form-control input-lg" id="eMail" name="eMail" placeholder="Email" required="true">
+							<?php echo form_error('eMail', '<div class="error">', '</div>'); ?>
 						</div>
 					</div>
 					<div class="row">
