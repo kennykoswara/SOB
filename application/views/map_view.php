@@ -35,26 +35,40 @@
 				$type = $row->type;
 				$lat = $row->lat;
 				$lng = $row->lng;
-				$html = "<b>" + $name + "</b> <br/>" + $address;
+				$request = $row->request;
 				?>
+				
+
 				var marker = new google.maps.Marker({ 
-					 position: new google.maps.LatLng(<?php echo $lat ?>, <?php echo $lng; ?>), 
+					position: new google.maps.LatLng(<?php echo $lat ?>, <?php echo $lng; ?>), 
+					animation: google.maps.Animation.DROP,
 					map: map,
-					title:"You are here!"
+					title:"<?php echo $name ?> \n <?php echo $address ?> \n <?php echo $request ?>",
+					icon: icons["<?php echo $type ?>"].icon
 				});
+				marker.addListener('click', toggleBounce);
 				<?php
 			}?>	
 			
-			bindInfoWindow(marker, map, infoWindow, html);
-			
 		}
-		function bindInfoWindow(marker, map, infoWindow, html) {
-			google.maps.event.addListener(marker, 'click', function() {
-				infoWindow.setContent(html);
-				infoWindow.open(map, marker);
-			});
+		var icons = {
+			restaurant: {
+				icon: 'http://labs.google.com/ridefinder/images/mm_20_blue.png'
+			},
+			bar: {
+				icon: 'http://labs.google.com/ridefinder/images/mm_20_red.png'
+			}
+		};
+		
+		function toggleBounce() {
+			  if (marker.getAnimation() !== null) {
+				marker.setAnimation(null);
+			  } else {
+				marker.setAnimation(google.maps.Animation.BOUNCE);
+			  }
+			}
 
-		}
+		
 		if (navigator.geolocation) {
 		  navigator.geolocation.getCurrentPosition(success);
 		} else {
