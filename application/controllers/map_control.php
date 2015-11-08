@@ -9,11 +9,12 @@ class map_control extends CI_Controller {
 		$this->load->database();
 		$this->load->helper('url');
 		$this->load->library('My_PHPMailer');
-		$this->load->model('login_model','',TRUE);
+		$this->load->model('map_model');
 		$this->load->library('form_validation');
 	}
 	public function index()
 	{
-		$this->load->view('map_view');
+		$data['markers'] = $this->map_model->select_markers();
+		$this->load->view('map_view', $data);
 	}
 }
