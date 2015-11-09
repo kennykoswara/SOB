@@ -63,12 +63,12 @@
                       <a href="/" class="navbar-brand logo">b</a>
                   	</div>
                   	<nav class="collapse navbar-collapse" role="navigation">
-                    <form class="navbar-form navbar-left">
+                    <form class="navbar-form navbar-left" action="<?=site_url('home_control/search')?>" method="post">
                         <div class="input-group input-group-sm" style="max-width:360px;">
-                          <input type="text" class="form-control" placeholder="Search" name="srch-term" id="srch-term">
-                          <div class="input-group-btn">
-                            <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
-                          </div>
+							<input type="text" class="form-control" placeholder="Search" name="search-term" id="srch-term">
+							<div class="input-group-btn">
+								<button class="btn btn-default" type="submit" name="searchForm" value="searchForm"><i class="glyphicon glyphicon-search"></i></button>
+							</div>
                         </div>
                     </form>
                     <ul class="nav navbar-nav">
@@ -90,7 +90,7 @@
                           <li><a href="">More</a></li>
                           <li><a href="">More</a></li>
                           <li><a href="">More</a></li>
-                          <li><a href="">More</a></li>
+                          <li><a href="<?php echo site_url('home_control/logout') ?>">Log out</a></li>
                         </ul>
                       </li>
                     </ul>

@@ -11,6 +11,7 @@ class login_control extends CI_Controller {
 		$this->load->library('My_PHPMailer');
 		$this->load->model('login_model','',TRUE);
 		$this->load->library('form_validation');
+		$this->load->library('session');
 	}
 	public function index()
 	{
@@ -24,7 +25,7 @@ class login_control extends CI_Controller {
 		else
 		{
 			$session_data = $this->session->userdata('logged_in');
-			print_r($session_data);
+			redirect('home_control', 'refresh');
 		}
 	}
 	
