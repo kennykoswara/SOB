@@ -78,6 +78,8 @@
 
 										<div class="well">
 										   Click the allow button to let the browser find your location.
+										   </br>
+										   &nbsp;
 											<article>
 											</article>
 										</div>
@@ -127,8 +129,8 @@
 				var mapcanvas = document.createElement('div');
 				var x = document.getElementById("demo");
 				mapcanvas.id = 'mapcontainer';
-				mapcanvas.style.height = '400px';
-				mapcanvas.style.width = '600px';
+				mapcanvas.style.height = '600px';
+				mapcanvas.style.width = '1190px';
 				document.querySelector('article').appendChild(mapcanvas);
 				var coords = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
 				x.innerHTML = "Latitude: " + position.coords.latitude + "<br>Longitude: " + position.coords.longitude;
@@ -158,8 +160,12 @@
 						position: new google.maps.LatLng(<?php echo $lat ?>, <?php echo $lng; ?>), 
 						animation: google.maps.Animation.DROP,
 						map: map,
+						url: "http://localhost/SOB/index.php/home_control",
 						title:"<?php echo $name ?> \n <?php echo $address ?> \n <?php echo $request ?>",
 						icon: icons["<?php echo $type ?>"].icon
+					});
+					google.maps.event.addListener(marker, 'click', function() {
+						window.location.href = marker.url;
 					});
 					marker.addListener('click', toggleBounce);
 					<?php
