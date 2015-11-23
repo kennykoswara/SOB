@@ -153,6 +153,7 @@
 					$lat = $row->lat;
 					$lng = $row->lng;
 					$request = $row->request;
+					$desc = $row->description;
 					?>
 					
 
@@ -161,7 +162,7 @@
 						animation: google.maps.Animation.DROP,
 						map: map,
 						url: "http://localhost/SOB/index.php/home_control",
-						title:"<?php echo $name ?> \n <?php echo $address ?> \n <?php echo $request ?>",
+						title:"<?php echo $request ?> \n <?php echo $name ?> \n <?php echo $address ?> \n <?php echo $desc ?>",
 						icon: icons["<?php echo $type ?>"].icon
 					});
 					google.maps.event.addListener(marker, 'click', function() {
@@ -173,10 +174,10 @@
 				
 			}
 			var icons = {
-				restaurant: {
+				easy: {
 					icon: 'http://labs.google.com/ridefinder/images/mm_20_blue.png'
 				},
-				bar: {
+				urgent: {
 					icon: 'http://labs.google.com/ridefinder/images/mm_20_red.png'
 				}
 			};

@@ -72,7 +72,7 @@
 							</nav>
 						</div>
                 <!-- /top nav -->
-
+					<?php echo form_open('askhelp_control'); ?>
 						<div class="padding">
 							<div class="full col-sm-9">
 
@@ -83,22 +83,28 @@
 									<div class="col-sm-5">
 
 										<div class="well">
-											<input type="text" class="form-control input-md" id="title" name="title" placeholder="Add a title" required="true">
+											<input type="text" class="form-control input-md" id="request" name="request" placeholder="Add a title" required="true">
 											
-											<div class="btn-group" style="margin-top:1em">
+											<!--<div class="btn-group" style="margin-top:1em">
 												<button type="button" class="btn btn-sm btn-danger">Help Type</button>
 												<button type="button" class="btn btn-danger btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 												  <span class="caret"></span>
 												  <span class="sr-only">Toggle Dropdown</span>
 												</button>
 												<ul class="dropdown-menu">
-												  <li><a href="#">Car Broke Down</a></li>
-												  <li><a href="#">Health Issue</a></li>
-												  <li><a href="#">Magang Issues</a></li>
+												  <li><a value="Car">Car Broke Down</a></li>
+												  <li><a value="Health">Health Issue</a></li>
+												  <li><a value="Work">Work Issues</a></li>
 												  <li role="separator" class="divider"></li>
 												  <li><a href="#">Other</a></li>
 												</ul>
-											</div>
+											</div>-->
+											
+											<select style="margin-top:1em" id="type" name="type">
+											  <option value="Easy">Easy</option>
+											  <option value="Medium">Medium</option>
+											  <option value="urgent">Urgent</option>
+											</select> 
 											
 											<!--<div class="range-slider round" data-slider data-options="start: 1; end: 3;">
 												<span class="range-slider-handle" role="slider" tabindex="0"></span>
@@ -106,7 +112,7 @@
 												<input type="hidden">
 											</div>-->
 											<div style="margin-top:1em">
-												<textarea class="form-control" rows="10" id="desc" placeholder="Help Description"></textarea>
+												<textarea class="form-control" rows="10" id="desc" name="desc" placeholder="Help Description"></textarea>
 											</div>
 										</div>
 									</div>
@@ -119,9 +125,12 @@
 										   <div id="map-canvas"></div>
 												Location:
 												</br> Latitude:&nbsp;&nbsp;&nbsp;
-												<input id="my_lat" readonly="readonly">
+												<input id="my_lat" name="my_lat" readonly="readonly">
 												<span> Longitude: 
-												<input id="my_long" readonly="readonly"> </span>
+												<input id="my_long" name="my_long" readonly="readonly"> </span>
+												</br>
+												</br>
+												<button type="submit" name="submitForm" value="submit" id="submit" class="btn btn-default"><b>Submit</b></button>
 										</div>
 									</div>
 								</div><!--/row-->
@@ -153,6 +162,7 @@
 
 							</div><!-- /col-9 -->
 						</div><!-- /padding -->
+					</form>
 			</div>
 		</div>
 		
