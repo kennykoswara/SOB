@@ -12,4 +12,28 @@ class askhelp_model extends CI_Model {
 		$query = $this->db->get();        
 		return $query;
 	}
+	
+	function get_address($id)
+	{
+		$this -> db -> select('address');
+		$this -> db -> from('user_info');
+		$this -> db -> where('id',$id);
+		$query = $this->db->get();  
+		return $query;  
+	}
+	
+	function add_help($username, $address)
+	{
+		$data=array(
+			'name'=>$username,
+			'address'=>$address,
+			'type'=>$this->input->post('type'),
+			'lat'=>$this->input->post('my_lat'),
+			'lng'=>$this->input->post('my_long'),
+			'request'=>$this->input->post('request'),
+			'description'=>$this->input->post('desc')
+		);
+		$this->db->insert('markers',$data);
+		return true;
+	}
 }

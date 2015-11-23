@@ -11,7 +11,7 @@
 			<script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
 		<![endif]-->
 		<link href="<?php echo base_url();?>asset/home/css/styles.css" rel="stylesheet" type="text/css"/>
-		
+
 	</head>
 	<body>
 		<div class="wrapper">
@@ -101,9 +101,9 @@
 										</p>
 									</div>
 								</div>
-						
+
 								<hr>
-								
+
 									<h4 class="text-center">
 										<a href="http://bootply.com/96266" target="ext">Download this Template @Bootply</a>
 									</h4>
@@ -119,12 +119,12 @@
 				</div>
 			</div>
 		</div>
-		
+
 		<section id="wrapper">
 			<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=true"></script>
 			<p id="demo"></p>
 			<script>
-			function success(position) 
+			function success(position)
 			{
 				var mapcanvas = document.createElement('div');
 				var x = document.getElementById("demo");
@@ -147,21 +147,22 @@
 				<?php
 				foreach ($markers->result() as $row)
 				{
-					$name = $row->name; 
-					$address =  $row->address; 
+					$name = $row->name;
+					$address =  $row->address;
 					$type = $row->type;
 					$lat = $row->lat;
 					$lng = $row->lng;
 					$request = $row->request;
+					$desc = $row->description;
 					?>
-					
 
-					var marker = new google.maps.Marker({ 
-						position: new google.maps.LatLng(<?php echo $lat ?>, <?php echo $lng; ?>), 
+
+					var marker = new google.maps.Marker({
+						position: new google.maps.LatLng(<?php echo $lat ?>, <?php echo $lng; ?>),
 						animation: google.maps.Animation.DROP,
 						map: map,
 						url: "http://localhost/SOB/index.php/home_control",
-						title:"<?php echo $name ?> \n <?php echo $address ?> \n <?php echo $request ?>",
+						title:"<?php echo $request ?> \n <?php echo $name ?> \n <?php echo $address ?> \n <?php echo $desc ?>",
 						icon: icons["<?php echo $type ?>"].icon
 					});
 					google.maps.event.addListener(marker, 'click', function() {
@@ -169,19 +170,19 @@
 					});
 					marker.addListener('click', toggleBounce);
 					<?php
-				}?>	
-				
+				}?>
+
 			}
 			var icons = {
-				restaurant: {
+				easy: {
 					icon: 'http://labs.google.com/ridefinder/images/mm_20_blue.png'
 				},
-				bar: {
+				urgent: {
 					icon: 'http://labs.google.com/ridefinder/images/mm_20_red.png'
 				}
 			};
-		
-			function toggleBounce() 
+
+			function toggleBounce()
 			{
 				if (marker.getAnimation() !== null) {
 					marker.setAnimation(null);
@@ -206,6 +207,6 @@
 		<script>
 		  $(document).foundation();
 		</script>
-		
+
 	</body>
 </html>

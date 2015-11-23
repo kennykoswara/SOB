@@ -14,7 +14,15 @@ class map_control extends CI_Controller {
 	}
 	public function index()
 	{
-		$data['markers'] = $this->map_model->select_markers();
-		$this->load->view('map_view', $data);
+		if($this->session->userdata('logged_in'))
+		{
+			$data['markers'] = $this->map_model->select_markers();
+			$this->load->view('map_view', $data);
+		}
+		else
+		{
+			//If no session, redirect to login page
+			redirect('login_control', 'refresh');
+		}
 	}
 }
