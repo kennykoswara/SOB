@@ -11,16 +11,19 @@ class home_control extends CI_Controller {
 		$this->load->helper(array('form'));
 		$this->load->library('session');
 		$this->load->model('home_model');
+		$this->load->helper('date');
 	}
 	public function index()
 	{
 		if($this->session->userdata('logged_in'))
 		{
-			$this->load->view('home_view');
+			$session_data = $this->session->userdata('logged_in');
+			$id = $session_data['id'];
+			$data['post']=$this->home_model->post_select($id);
+			$this->load->view('home_view', $data);
 		}
 		else
 		{
-			//If no session, redirect to login page
 			redirect('login_control', 'refresh');
 		}
 	}

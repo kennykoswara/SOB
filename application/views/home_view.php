@@ -144,16 +144,39 @@
                                     </div>
                                   </form>
                                 </div>
-
-                               <div class="panel panel-default">
-                                 <div class="panel-heading"><a href="#" class="pull-right">View all</a> <h4>Bootply Editor &amp; Code Library</h4></div>
-                                  <div class="panel-body">
-                                    <p><img src="//placehold.it/150x150" class="img-circle pull-right"> <a href="#">The Bootstrap Playground</a></p>
-                                    <div class="clearfix"></div>
-                                    <hr>
-                                    Design, build, test, and prototype using Bootstrap in real-time from your Web browser. Bootply combines the power of hand-coded HTML, CSS and JavaScript with the benefits of responsive design using Bootstrap. Find and showcase Bootstrap-ready snippets in the 100% free Bootply.com code repository.
-                                  </div>
-                               </div>
+								
+								<?php foreach ($post->result() as $row)  
+								{ ?>
+									<div class="panel panel-default">
+										<div class="panel-heading">
+											<!--<a href="#" class="pull-right">View all</a>-->
+											<h3> <?php echo $row->request; ?> </h3>
+												<!--<h4>Bootply Editor &amp; Code Library</h4>-->
+										</div>
+										<div class="panel-body">
+											<p>
+												<img src="//placehold.it/150x150" class="img-circle pull-left"> 
+												<div>
+													<a href="#" style="padding-left:1cm;"> <b> <?php echo $row->name ?> </b></a>
+													</br>
+													<font color="grey" size=2 style="padding-left:1cm;"> <?php echo $row->post_time ?> </font>
+													<div>
+														<?php if ($row->type == 'urgent'): ?>
+														   <font color="red" style="padding-left:1cm;"> <?php echo $row->type ?> </font>
+														<?php elseif ($row->type == 'medium'): ?>
+														   <font color="yellow" style="padding-left:1cm;"> <?php echo $row->type ?> </font>
+														<?php else: ?>
+														   <font color="green" style="padding-left:1cm;"> <?php echo $row->type ?> </font>
+														<?php endif; ?>
+													</div>
+												</div>
+											</p>
+											<div class="clearfix"></div>
+											<hr>
+												<?php echo $row->description ?>
+										</div>
+									</div>
+								<?php } ?>
 
                                <div class="panel panel-default">
                                  <div class="panel-heading"><a href="#" class="pull-right">View all</a> <h4>Stackoverflow</h4></div>

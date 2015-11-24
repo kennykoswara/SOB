@@ -22,7 +22,7 @@ class askhelp_model extends CI_Model {
 		return $query;  
 	}
 	
-	function add_help($username, $address)
+	function add_help($username, $address, $datetime)
 	{
 		$data=array(
 			'name'=>$username,
@@ -31,6 +31,7 @@ class askhelp_model extends CI_Model {
 			'lat'=>$this->input->post('my_lat'),
 			'lng'=>$this->input->post('my_long'),
 			'request'=>$this->input->post('request'),
+			'post_time'=>$datetime,
 			'description'=>$this->input->post('desc')
 		);
 		$this->db->insert('markers',$data);

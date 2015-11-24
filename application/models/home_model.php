@@ -16,4 +16,12 @@
 			$query = $this->db->get();  
 			return $query;
 		}
+		public function post_select($id)  
+		{  
+			$this -> db -> select('name, lat, lng, type, request, description, status, post_time');
+			$this -> db -> from('markers');
+			$this->db->order_by("post_time", "desc"); 
+			$query = $this->db->get();  
+			return $query;  
+		}  
    }

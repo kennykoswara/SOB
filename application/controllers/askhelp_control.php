@@ -11,6 +11,7 @@ class askhelp_control extends CI_Controller {
 		$this->load->library('My_PHPMailer');
 		$this->load->model('askhelp_model');
 		$this->load->library('form_validation');
+		$this->load->helper('date');
 	}
 	public function index()
 	{
@@ -34,11 +35,12 @@ class askhelp_control extends CI_Controller {
 				foreach($data['get_address']->result_array() as $row){
 					$address = $row['address'];
 				}
-				if($this->askhelp_model->add_help($username, $address))
+				$datetime = date('Y-m-d h:i:s', now());
+				if($this->askhelp_model->add_help($username, $address, $datetime))
 				{
 					//echo "SELAMAT ANDA BERHASIL MINTA TOLONG!!";
-					echo "<script language=\"javascript\">alert('Your Request Has been Sent Successfully');</script>";
-					redirect('askhelp_control', 'refresh');
+					//echo "<script language=\"javascript\">alert('Your Request Has been Sent Successfully');</script>";
+					redirect('home_control', 'refresh');
 				}
 			}
 		}
