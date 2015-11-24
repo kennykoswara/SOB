@@ -6,11 +6,11 @@ class login_model extends CI_Model {
 	parent::__construct();
 	}
 	
-	function login($username, $password)
+	function login($useremail, $password)
 	{
 		$this -> db -> select('id, username, email');
 		$this -> db -> from('user_info');
-		$this -> db -> where('username', $username);
+		$this -> db -> where('email', $useremail);
 		$this -> db -> where('password', MD5($password));
 		$this -> db -> limit(1);
 		$query = $this -> db -> get();

@@ -16,7 +16,7 @@ class login_control extends CI_Controller {
 	public function index()
 	{
 		$this->load->library('form_validation');
-		$this->form_validation->set_rules('username', 'username', 'trim|required|xss_clean');
+		$this->form_validation->set_rules('useremail', 'useremail', 'trim|required|xss_clean');
 		$this->form_validation->set_rules('password', 'password', 'trim|required|xss_clean|callback_check_database');
 		if($this->form_validation->run() == FALSE && !$this->session->userdata('logged_in'))
 		{
@@ -31,8 +31,8 @@ class login_control extends CI_Controller {
 	
 	function check_database($password)
 	{
-		$username = $this->input->post('username');
-		$result = $this->login_model->login($username, $password);
+		$useremail = $this->input->post('useremail');
+		$result = $this->login_model->login($useremail, $password);
 		if($result)
 		{
 			$sess_array = array();

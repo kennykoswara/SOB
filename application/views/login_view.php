@@ -12,7 +12,7 @@
 			echo form_open('login_control',$attributes); ?>
 				<div class="row">
 					<div class="form-group">
-						<input type="text" class="form-control input-md" id="username" name="username" placeholder="Username" required="true">
+						<input type="email" class="form-control input-md" id="useremail" name="useremail" placeholder="Email" required="true">
 					</div>
 					<div class="form-group">
 						<input type="password" class="form-control input-md" id="password" name="password" placeholder="Password" required="true">

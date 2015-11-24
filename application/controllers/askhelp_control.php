@@ -36,7 +36,9 @@ class askhelp_control extends CI_Controller {
 				}
 				if($this->askhelp_model->add_help($username, $address))
 				{
-					echo "SELAMAT ANDA BERHASIL MINTA TOLONG!!";
+					//echo "SELAMAT ANDA BERHASIL MINTA TOLONG!!";
+					echo "<script language=\"javascript\">alert('Your Request Has been Sent Successfully');</script>";
+					redirect('askhelp_control', 'refresh');
 				}
 			}
 		}
