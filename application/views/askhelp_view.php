@@ -11,7 +11,7 @@
 			<script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
 		<![endif]-->
 		<link href="<?php echo base_url();?>asset/home/css/styles.css" rel="stylesheet" type="text/css"/>
-		
+
 	</head>
 	<style>
 #map-canvas {
@@ -84,7 +84,7 @@
 
 										<div class="well">
 											<input type="text" class="form-control input-md" id="request" name="request" placeholder="Add a title" required="true">
-											
+
 											<!--<div class="btn-group" style="margin-top:1em">
 												<button type="button" class="btn btn-sm btn-danger">Help Type</button>
 												<button type="button" class="btn btn-danger btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -99,13 +99,13 @@
 												  <li><a href="#">Other</a></li>
 												</ul>
 											</div>-->
-											
+
 											<select style="margin-top:1em" id="type" name="type">
-											  <option value="Easy">Easy</option>
-											  <option value="Medium">Medium</option>
+											  <option value="easy">Easy</option>
+											  <option value="medium">Medium</option>
 											  <option value="urgent">Urgent</option>
-											</select> 
-											
+											</select>
+
 											<!--<div class="range-slider round" data-slider data-options="start: 1; end: 3;">
 												<span class="range-slider-handle" role="slider" tabindex="0"></span>
 												<span class="range-slider-active-segment"></span>
@@ -126,7 +126,7 @@
 												Location:
 												</br> Latitude:&nbsp;&nbsp;&nbsp;
 												<input id="my_lat" name="my_lat" readonly="readonly">
-												<span> Longitude: 
+												<span> Longitude:
 												<input id="my_long" name="my_long" readonly="readonly"> </span>
 												</br>
 												</br>
@@ -150,9 +150,9 @@
 										</p>
 									</div>
 								</div>
-						
+
 								<hr>
-								
+
 									<h4 class="text-center">
 										<a href="http://bootply.com/96266" target="ext">Download this Template @Bootply</a>
 									</h4>
@@ -165,12 +165,12 @@
 					</form>
 			</div>
 		</div>
-		
+
 		<section id="wrapper">
 			<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=true"></script>
 			<p id="demo"></p>
 			<script>
-				function initialize() 
+				function initialize()
 				{
 					var map;
 					var position = new google.maps.LatLng(-6.2559323, 106.61493070000006);    // set your own default location.
@@ -180,19 +180,19 @@
 					};
 					var map = new google.maps.Map(document.getElementById("map-canvas"), myOptions);
 
-					// We send a request to search for the location of the user.  
+					// We send a request to search for the location of the user.
 					// If that location is found, we will zoom/pan to this place, and set a marker
 					navigator.geolocation.getCurrentPosition(locationFound, locationNotFound);
 
-					function locationFound(position) 
+					function locationFound(position)
 					{
 						// we will zoom/pan to this place, and set a marker
 						var location = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
 						// var accuracy = position.coords.accuracy;
 						map.setCenter(location);
 						var marker = new google.maps.Marker({
-							position: location, 
-							map: map, 
+							position: location,
+							map: map,
 							draggable: true,
 							title: "Help me here! Drag the marker to the exact location."
 						});
@@ -216,7 +216,7 @@
 				google.maps.event.addDomListener(window, 'load', initialize);
 			</script>
 		</section>
-		
+
 		<!-- script references -->
 		<script src="<?php echo base_url();?>asset/js/jquery-2.1.4.min.js" type="text/javascript"></script>
 		<script src="<?php echo base_url();?>asset/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
@@ -226,6 +226,6 @@
 		<script>
 		  $(document).foundation();
 		</script>
-		
+
 	</body>
 </html>

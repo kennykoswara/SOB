@@ -144,10 +144,16 @@
                                     </div>
                                   </form>
                                 </div>
-								
-								<?php foreach ($post->result() as $row)  
+
+								<?php foreach ($post->result() as $row)
 								{ ?>
-									<div class="panel panel-default">
+									<?php if ($row->type == 'urgent'): ?>
+										 <div class="panel panel-danger">
+									<?php elseif ($row->type == 'medium'): ?>
+										 <div class="panel panel-warning">
+									<?php else: ?>
+										 <div class="panel panel-success">
+									<?php endif; ?>
 										<div class="panel-heading">
 											<!--<a href="#" class="pull-right">View all</a>-->
 											<h3> <?php echo $row->request; ?> </h3>
@@ -155,18 +161,18 @@
 										</div>
 										<div class="panel-body">
 											<p>
-												<img src="//placehold.it/150x150" class="img-circle pull-left"> 
+												<img src="//placehold.it/150x150" class="img-circle pull-left">
 												<div>
 													<a href="#" style="padding-left:1cm;"> <b> <?php echo $row->name ?> </b></a>
 													</br>
 													<font color="grey" size=2 style="padding-left:1cm;"> <?php echo $row->post_time ?> </font>
 													<div>
 														<?php if ($row->type == 'urgent'): ?>
-														   <font color="red" style="padding-left:1cm;"> <?php echo $row->type ?> </font>
+														   <span class="label label-danger" style="margin-left:1cm">Urgent</span>
 														<?php elseif ($row->type == 'medium'): ?>
-														   <font color="yellow" style="padding-left:1cm;"> <?php echo $row->type ?> </font>
+														   <span class="label label-warning" style="margin-left:1cm">Medium</span>
 														<?php else: ?>
-														   <font color="green" style="padding-left:1cm;"> <?php echo $row->type ?> </font>
+														   <span class="label label-success" style="margin-left:1cm">Easy</span>
 														<?php endif; ?>
 													</div>
 												</div>
