@@ -12,10 +12,12 @@ class map_control extends CI_Controller {
 		$this->load->model('map_model');
 		$this->load->library('form_validation');
 	}
-	public function index()
+	public function index($locate_lat=null, $locate_lng=null)
 	{
 		if($this->session->userdata('logged_in'))
 		{
+			$data['locate_lat'] = $locate_lat;
+			$data['locate_lng'] = $locate_lng;
 			$data['markers'] = $this->map_model->select_markers();
 			$this->load->view('map_view', $data);
 		}

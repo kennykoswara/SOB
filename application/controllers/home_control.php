@@ -12,6 +12,7 @@ class home_control extends CI_Controller {
 		$this->load->library('session');
 		$this->load->model('home_model');
 		$this->load->helper('date');
+		$this->load->helper('url');
 	}
 	public function index()
 	{
@@ -42,5 +43,12 @@ class home_control extends CI_Controller {
 			session_destroy();
 			redirect('login_control', 'refresh');
 		}
+	}
+	public function load_map()
+	{
+		$this->load->library('../controllers/map_control');
+		$lat = $this->input->get('var1');
+		$lng = $this->input->get('var2');
+		$this->map_control->index($lat,$lng);
 	}
 }

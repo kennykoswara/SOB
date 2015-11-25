@@ -78,6 +78,7 @@
 
 										<div class="well">
 										   Click the allow button to let the browser find your location.
+										   <?php echo "</br>Latitude: " . $locate_lat . "\nLongitude: " . $locate_lng;?>
 										   </br>
 										   &nbsp;
 											<article>
@@ -132,7 +133,14 @@
 				mapcanvas.style.height = '600px';
 				mapcanvas.style.width = '1190px';
 				document.querySelector('article').appendChild(mapcanvas);
-				var coords = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+				<?php 
+					if($locate_lng === NULL) {?>
+						var coords = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+					<?php }else{ ?>
+						var coords = new google.maps.LatLng(<?php echo $locate_lat ?> , <?php echo $locate_lng ?>);
+					<?php } ?>
+											
+				
 				x.innerHTML = "Latitude: " + position.coords.latitude + "<br>Longitude: " + position.coords.longitude;
 				var options = {
 					zoom: 15,
@@ -175,7 +183,10 @@
 			}
 			var icons = {
 				easy: {
-					icon: 'http://labs.google.com/ridefinder/images/mm_20_blue.png'
+					icon: 'http://labs.google.com/ridefinder/images/mm_20_green.png'
+				},
+				medium: {
+					icon: 'http://labs.google.com/ridefinder/images/mm_20_yellow.png'
 				},
 				urgent: {
 					icon: 'http://labs.google.com/ridefinder/images/mm_20_red.png'
