@@ -22,10 +22,11 @@ class askhelp_model extends CI_Model {
 		return $query;  
 	}
 	
-	function add_help($username, $address, $datetime)
+	function add_help($username, $address, $datetime, $id)
 	{
 		$data=array(
 			'name'=>$username,
+			'id_user'=>$id,
 			'address'=>$address,
 			'type'=>$this->input->post('type'),
 			'lat'=>$this->input->post('my_lat'),

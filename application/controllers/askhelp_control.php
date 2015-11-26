@@ -36,7 +36,7 @@ class askhelp_control extends CI_Controller {
 					$address = $row['address'];
 				}
 				$datetime = date('Y-m-d h:i:s', now());
-				if($this->askhelp_model->add_help($username, $address, $datetime))
+				if($this->askhelp_model->add_help($username, $address, $datetime, $id))
 				{
 					//echo "SELAMAT ANDA BERHASIL MINTA TOLONG!!";
 					//echo "<script language=\"javascript\">alert('Your Request Has been Sent Successfully');</script>";

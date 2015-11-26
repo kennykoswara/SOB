@@ -6,6 +6,7 @@
 	<title>HansKD - Profile</title>
 	<meta name="generator" content="Bootply" />
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<link href="<?php echo base_url();?>asset/css/learn_style.css" rel="stylesheet" type="text/css" />
 	<link href="<?php echo base_url();?>asset/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
 	<!--[if lt IE 9]>
 	<script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
@@ -82,7 +83,35 @@
 										</div>
 										<div class="panel-body">
 											<div class="col-md-4">
-												<img src="http://placehold.it/150x150">
+												<?php foreach ($user->result() as $column)
+												{ ?>
+													<div id="thumblist">
+														<a href="#image1">
+															<!--what the user sees before clicking anything-->
+															<img src="<?php echo base_url(); echo $column->picture ?>" class="thumb" style="max-width:150px;max-height:150px;width:auto;height:auto;">
+														</a>
+														<div id="image1" class="lightbox">
+															<!--what the user sees after clicking the first image-->
+															<a href="#_">
+																<!--no need for a left arrow because there is no previous image to go to-->
+																<img src="<?php echo base_url(); echo $column->picture ?>" />
+																<!--this is the actual image that 'grows'-->
+															</a>
+															<a href="#_">
+																<!--this href takes out out of full screen. -->
+																<img src="http://i.imgur.com/6JOeXGB.png" class="exit" />
+																<!--exit button-->
+															</a>
+															<?php echo form_open_multipart('profile_control/do_upload'); ?>
+																<input id="browse" type="file" name="userfile" size="20" style="text-align: center; position: absolute;left:42%;margin-top:20px;">
+
+																</br>
+
+																<input id = "browse_submit" type="submit" value="upload" style="text-align: center; position: absolute;left:42%;margin-top:30px;">
+															</form>
+														</div>													
+													</div>
+												<?php } ?>
 											</div>
 											<div class="col-md-offset-1 col-md-7">
 												<p>
@@ -158,7 +187,7 @@
 												</div>
 											</form>
 										</div>
-
+										
 										<?php foreach ($post->result() as $row)
 										{ ?>
 											<?php if ($row->type == 'urgent'): ?>
