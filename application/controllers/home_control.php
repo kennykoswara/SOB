@@ -32,7 +32,8 @@ class home_control extends CI_Controller {
 	{
 		$term = $this->input->post('search-term');
 		$session_data = $this->session->userdata('logged_in');
-		$data['other_user']=$this->home_model->select($term, $session_data['username']);
+		$data['other_user']=$this->home_model->select($term, $session_data['id']);
+		$data['check_friend']=$this->home_model->check_friend($session_data['id']);
 		$this->load->view('search_view', $data);
 	}
 	public function logout()
@@ -50,5 +51,13 @@ class home_control extends CI_Controller {
 		$lat = $this->input->get('var1');
 		$lng = $this->input->get('var2');
 		$this->map_control->index($lat,$lng);
+	}
+	public function request_friend($acc)
+	{
+		$session_data = $this->session->userdata('logged_in');
+		if($this->home_model->add_request($session_data['id'], $acc))
+		{
+			redirect('home_control', 'refresh');
+		}
 	}
 }

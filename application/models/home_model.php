@@ -6,15 +6,24 @@
 			parent::__construct();  
 		}  
 
-		public function select($term, $username)
+		public function select($term, $id)
 		{
 			$this -> db -> select('id, username, email');
 			$this -> db -> from('user_info');
 			$this->db->where("(username LIKE '%$term' OR username LIKE '%$term%' OR username LIKE '$term%')");
-			$this->db->where('username !=', $username);
+			$this->db->where('id !=', $id);
 			$this->db->order_by("username", "asc"); 
 			$query = $this->db->get();  
 			return $query;
+		}
+		public function check_friend($id)
+		{
+			$this -> db -> select('user_info.id, user_info.username, friends.approval');
+			$this -> db -> from('user_info');
+			$this->db->join('friends', 'user_info.id = friends.id_friend');
+			$this -> db -> where('friends.id_user',$id);
+			$query = $this->db->get();  
+			return $query;  
 		}
 		public function post_select($id)  
 		{  
@@ -24,4 +33,16 @@
 			$query = $this->db->get();  
 			return $query;  
 		}  
+		public function add_request($id_user, $id_friend)
+		{
+			$data=array(
+				'id_user'=>$id_user,
+				'id_friend'=>$id_friend,
+				'request'=>'send',
+				'approval'=>'pending',
+				'status'=>'F'
+			);
+			$this->db->insert('friends',$data);
+			return true;
+		}
    }
