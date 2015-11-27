@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>HansKD - Sign In or Register</title>
+		<title>HelpMe - Sign In or Register</title>
 		<link href="<?php echo base_url();?>asset/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
 		<link href="<?php echo base_url();?>asset/login/css/my_styles.css" rel="stylesheet" type="text/css"/>
 	</head>
@@ -31,7 +31,7 @@
 					<h1>Help Other People.</h1>
 				</div>
 				<div class="row">
-					<h3>HHAHFAHFHFAHFHAHGFAH</h3>
+					<h3>Sharing is Caring</h3>
 				</div>
 			</div>
 			<div class="col-md-offset-1 col-md-4">

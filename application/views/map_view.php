@@ -3,7 +3,7 @@
 	<head>
 		<meta http-equiv="content-type" content="text/html; charset=UTF-8">
 		<meta charset="utf-8">
-		<title>Map</title>
+		<title>HelpMe - Map</title>
 		<meta name="generator" content="Bootply" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 		<link href="<?php echo base_url();?>asset/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
@@ -133,14 +133,14 @@
 				mapcanvas.style.height = '600px';
 				mapcanvas.style.width = '1190px';
 				document.querySelector('article').appendChild(mapcanvas);
-				<?php 
+				<?php
 					if($locate_lng === NULL) {?>
 						var coords = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
 					<?php }else{ ?>
 						var coords = new google.maps.LatLng(<?php echo $locate_lat ?> , <?php echo $locate_lng ?>);
 					<?php } ?>
-											
-				
+
+
 				x.innerHTML = "Latitude: " + position.coords.latitude + "<br>Longitude: " + position.coords.longitude;
 				var options = {
 					zoom: 15,

@@ -3,7 +3,7 @@
 	<head>
 		<meta http-equiv="content-type" content="text/html; charset=UTF-8">
 		<meta charset="utf-8">
-		<title>HansKD - Home</title>
+		<title>HelpMe - Home</title>
 		<meta name="generator" content="Bootply" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 		<link href="<?php echo base_url();?>asset/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
@@ -74,7 +74,7 @@
 
 									<!-- main col left -->
 									<div class="col-sm-5">
-		
+
 										<div class="panel panel-default">
 											<div class="panel-thumbnail"><img src="/assets/example/bg_5.jpg" class="img-responsive"></div>
 											<div class="panel-body">
@@ -136,7 +136,7 @@
 											</div>
 										  </form>
 										</div>
-										
+
 										<?php foreach ($post->result() as $row)
 										{ ?>
 											<?php if ($row->type == 'urgent'): ?>
@@ -243,7 +243,7 @@
 									</div>
 
 									<hr>
-	
+
 										<h4 class="text-center">
 											<a href="http://bootply.com/96266" target="ext">Download this Template @Bootply</a>
 										</h4>
