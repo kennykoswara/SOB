@@ -41,13 +41,16 @@
 								</form>
 								<ul class="nav navbar-nav">
 									<li>
-										<a href="#"><i class="glyphicon glyphicon-home"></i> Home</a>
+										<a href="<?php echo site_url('home_control') ?>"><i class="glyphicon glyphicon-home"></i> Home</a>
 									</li>
 									<li>
-										<a href="#postModal" role="button" data-toggle="modal"><i class="glyphicon glyphicon-plus"></i> Post</a>
+										<a href="<?php echo site_url('profile_control') ?>"><i class="glyphicon glyphicon-th-large"></i> Profile</a>
 									</li>
 									<li>
-										<a href="#"><span class="badge">badge</span></a>
+										<a href="<?php echo site_url('askhelp_control') ?>"><i class="glyphicon glyphicon-map-marker"></i> AskHelp</a>
+									</li>
+									<li>
+										<a href="<?php echo site_url('map_control') ?>"><i class="glyphicon glyphicon-road"></i> Map</a>
 									</li>
 								</ul>
 								<ul class="nav navbar-nav navbar-right">
@@ -134,44 +137,54 @@
 
 										<?php foreach ($post->result() as $row)
 										{ ?>
-											<?php if ($row->type == 'urgent'): ?>
-												 <div class="panel panel-danger" onclick="location.href='<?php echo base_url('index.php/home_control/load_map?var1='. $row->lat . '&var2=' . $row->lng)?>';" style="cursor: pointer;">
-											<?php elseif ($row->type == 'medium'): ?>
-												 <div class="panel panel-warning" onclick="location.href='<?php echo base_url('index.php/home_control/load_map?var1='. $row->lat . '&var2=' . $row->lng)?>';" style="cursor: pointer;">
-											<?php else: ?>
-												 <div class="panel panel-success" onclick="location.href='<?php echo base_url('index.php/home_control/load_map?var1='. $row->lat . '&var2=' . $row->lng)?>';" style="cursor: pointer;">
-											<?php endif; ?>
-												<div class="panel-heading">
-													<!--<a href="#" class="pull-right">View all</a>-->
-													<h3> <?php echo $row->request; ?> </h3>
-														<!--<h4>Bootply Editor &amp; Code Library</h4>-->
-												</div>
-												<div class="panel-body">
-													<p>
-														<img src="//placehold.it/150x150" class="img-circle pull-left">
-														<div>
-															<a href="#" style="padding-left:1cm;"> <b> <?php echo $row->name ?> </b></a>
-															</br>
-															<font color="grey" size=2 style="padding-left:1cm;"> <?php echo $row->post_time ?> </font>
+											<?php $counter=0; 
+											foreach($friend_post->result() as $column)
+											{
+												if(($column->id_user != $row->id_user) && ($column->id_friend != $row->id_user))
+													continue;
+												else
+													$counter++;
+											} 
+											if($counter>0 || ($row->id_user == $user_id) )
+											{ ?>
+												<?php if ($row->type == 'urgent'): ?>
+													 <div class="panel panel-danger" onclick="location.href='<?php echo base_url('index.php/home_control/load_map?var1='. $row->lat . '&var2=' . $row->lng)?>';" style="cursor: pointer;">
+												<?php elseif ($row->type == 'medium'): ?>
+													 <div class="panel panel-warning" onclick="location.href='<?php echo base_url('index.php/home_control/load_map?var1='. $row->lat . '&var2=' . $row->lng)?>';" style="cursor: pointer;">
+												<?php else: ?>
+													 <div class="panel panel-success" onclick="location.href='<?php echo base_url('index.php/home_control/load_map?var1='. $row->lat . '&var2=' . $row->lng)?>';" style="cursor: pointer;">
+												<?php endif; ?>
+													<div class="panel-heading">
+														<!--<a href="#" class="pull-right">View all</a>-->
+														<h3> <?php echo $row->request; ?> </h3>
+															<!--<h4>Bootply Editor &amp; Code Library</h4>-->
+													</div>
+													<div class="panel-body">
+														<p>
+															<img src="//placehold.it/150x150" class="img-circle pull-left">
 															<div>
-																<?php if ($row->type == 'urgent'): ?>
-																   <span class="label label-danger" style="margin-left:1cm">Urgent</span>
-																<?php elseif ($row->type == 'medium'): ?>
-																   <span class="label label-warning" style="margin-left:1cm">Medium</span>
-																<?php else: ?>
-																   <span class="label label-success" style="margin-left:1cm">Easy</span>
-																<?php endif; ?>
+																<a href="#" style="padding-left:1cm;"> <b> <?php echo $row->name ?> </b></a>
+																</br>
+																<font color="grey" size=2 style="padding-left:1cm;"> <?php echo $row->post_time ?> </font>
+																<div>
+																	<?php if ($row->type == 'urgent'): ?>
+																	   <span class="label label-danger" style="margin-left:1cm">Urgent</span>
+																	<?php elseif ($row->type == 'medium'): ?>
+																	   <span class="label label-warning" style="margin-left:1cm">Medium</span>
+																	<?php else: ?>
+																	   <span class="label label-success" style="margin-left:1cm">Easy</span>
+																	<?php endif; ?>
+																</div>
 															</div>
-														</div>
-													</p>
-													<div class="clearfix"></div>
-													<hr>
-														<?php echo $row->description ?>
+														</p>
+														<div class="clearfix"></div>
+														<hr>
+															<?php echo $row->description ?>
+													</div>
 												</div>
-											</div>
-											</a>
+												</a>
+											<?php } ?>
 										<?php } ?>
-
 									</div>
 											<div class="panel panel-default">
 												<div class="panel-heading"><a href="#" class="pull-right">View all</a> <h4>Stackoverflow</h4></div>

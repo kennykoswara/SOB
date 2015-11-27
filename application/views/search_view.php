@@ -1,6 +1,6 @@
 <html>
 	<head>
-		<title> Search Page </title>
+		<title> HelpMe - Search </title>
 		<link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">
 		<link href="<?php echo base_url();?>asset/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
 		<link href="<?php echo base_url();?>asset/login/css/my_styles.css" rel="stylesheet" type="text/css"/>
@@ -97,7 +97,7 @@
 												<tr>
 													<td>
 														<img src="http://bootdey.com/img/Content/user_1.jpg" alt="">
-														<a href="#" class="user-link"><?php echo $row->username;?></a>
+														<a href="<?php echo site_url('friend_control/index/'.$row->id) ?>" class="user-link"><?php echo $row->username;?></a>
 														<span class="user-subhead">Member</span>
 													</td>
 													<td>2013/08/12</td>
@@ -113,7 +113,19 @@
 																<span class="label label-default">friend</span>
 															<?php $count_friend++;
 															}
-														} ?>
+														} 
+														foreach($friend_connect->result() as $check)
+														{
+															if($row->id == $check->id_user && $check->approval == 'pending' && $count_friend == 0)
+															{ ?>
+																<span class="label label-default">pending</span>
+																<?php $count_friend++;
+															}
+															else if ($row->id == $check->id_user && $check->approval == 'approved' && $count_friend == 0){ ?>
+																<span class="label label-default">friend</span>
+															<?php $count_friend++;
+															}
+														}?>
 													</td>
 													<td>
 														<a href="#"> <?php echo $row->email; ?> </a>
@@ -123,8 +135,15 @@
 															if($column->id != $row->id)
 																continue;
 															else 
-																$counter++;
+																$counter++;	
 														} 
+														foreach($friend_connect->result() as $check)
+														{
+															if($row->id == $check->id_user)
+																$counter++;
+															else
+																continue;
+														}
 														if($counter==0)
 														{
 															echo form_open('home_control/request_friend/'.$row->id);?>

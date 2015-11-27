@@ -21,6 +21,8 @@ class home_control extends CI_Controller {
 			$session_data = $this->session->userdata('logged_in');
 			$id = $session_data['id'];
 			$data['post']=$this->home_model->post_select($id);
+			$data['friend_post']=$this->home_model->check_post($id);
+			$data['user_id'] = $id;
 			$this->load->view('home_view', $data);
 		}
 		else
@@ -34,6 +36,7 @@ class home_control extends CI_Controller {
 		$session_data = $this->session->userdata('logged_in');
 		$data['other_user']=$this->home_model->select($term, $session_data['id']);
 		$data['check_friend']=$this->home_model->check_friend($session_data['id']);
+		$data['friend_connect']=$this->home_model->check_post($session_data['id']);
 		$this->load->view('search_view', $data);
 	}
 	public function logout()

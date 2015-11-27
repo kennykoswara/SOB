@@ -41,15 +41,18 @@
 									</div>
 								</form>
 								<ul class="nav navbar-nav">
-								  <li>
-									<a href="#"><i class="glyphicon glyphicon-home"></i> Home</a>
-								  </li>
-								  <li>
-									<a href="#postModal" role="button" data-toggle="modal"><i class="glyphicon glyphicon-plus"></i> Post</a>
-								  </li>
-								  <li>
-									<a href="#"><span class="badge">badge</span></a>
-								  </li>
+									<li>
+										<a href="<?php echo site_url('home_control') ?>"><i class="glyphicon glyphicon-home"></i> Home</a>
+									</li>
+									<li>
+										<a href="<?php echo site_url('profile_control') ?>"><i class="glyphicon glyphicon-th-large"></i> Profile</a>
+									</li>
+									<li>
+										<a href="<?php echo site_url('askhelp_control') ?>"><i class="glyphicon glyphicon-map-marker"></i> AskHelp</a>
+									</li>
+									<li>
+										<a href="<?php echo site_url('map_control') ?>"><i class="glyphicon glyphicon-road"></i> Map</a>
+									</li>
 								</ul>
 								<ul class="nav navbar-nav navbar-right">
 								  <li class="dropdown">

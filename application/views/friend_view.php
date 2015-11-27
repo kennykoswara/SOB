@@ -3,7 +3,7 @@
 <head>
 	<meta http-equiv="content-type" content="text/html; charset=UTF-8">
 	<meta charset="utf-8">
-	<title>HelpMe - profile</title>
+	<title>HelpMe - Friend</title>
 	<meta name="generator" content="Bootply" />
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 	<link href="<?php echo base_url();?>asset/css/learn_style.css" rel="stylesheet" type="text/css" />
@@ -86,7 +86,7 @@
 										</div>
 										<div class="panel-body">
 											<div class="col-md-4">
-												<?php foreach ($user->result() as $column)
+												<?php foreach ($friend->result() as $column)
 												{ ?>
 													<div id="thumblist">
 														<a href="#image1">
@@ -105,13 +105,6 @@
 																<img src="http://i.imgur.com/6JOeXGB.png" class="exit" />
 																<!--exit button-->
 															</a>
-															<?php echo form_open_multipart('profile_control/do_upload'); ?>
-																<input id="browse" type="file" name="userfile" size="20" style="text-align: center; position: absolute;left:42%;margin-top:20px;">
-
-																</br>
-
-																<input id = "browse_submit" type="submit" value="upload" style="text-align: center; position: absolute;left:42%;margin-top:30px;">
-															</form>
 														</div>													
 													</div>
 												<?php } ?>
@@ -132,6 +125,17 @@
 												<div class="rating" style="float:left">
 													<span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
 												</div>
+												<?php foreach ($request->result() as $type)
+												{ 
+													if($type->request == 'send' && $type->approval == 'pending')
+													{ ?>
+													<form action="<?=site_url('friend_control/change_request/'.$id)?>" method="POST">
+														<button type="submit" class="label label-default"> Cancel request </button>
+													</form>
+													<?php } else if($type->request == 'send' && $type->approval == 'approved'){ ?>
+														<span class="label label-default"> Friend </span>
+													<?php } ?>
+												<?php } ?>
 											</div>
 										</div>
 									</div>
