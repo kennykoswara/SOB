@@ -11,6 +11,7 @@ class map_control extends CI_Controller {
 		$this->load->library('My_PHPMailer');
 		$this->load->model('map_model');
 		$this->load->library('form_validation');
+		$this->load->helper('date');
 	}
 	public function index($locate_lat=null, $locate_lng=null)
 	{
@@ -40,5 +41,12 @@ class map_control extends CI_Controller {
 		$session_data = $this->session->userdata('logged_in');
 		$id_user = $session_data['id'];
 		$this->map_model->update_approval($id, $id_user);
+	}
+	public function book_mission($id_mission, $id_requestor)
+	{
+		$session_data = $this->session->userdata('logged_in');
+		$id = $session_data['id'];
+		$datetime = date('Y-m-d h:i:s', now());
+		$this->map_model->add_book($id_mission, $id_requestor, $id, $datetime);
 	}
 }

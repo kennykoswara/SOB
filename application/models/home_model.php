@@ -31,6 +31,7 @@
 			$this -> db -> from('friends');
 			$this -> db -> where('friends.id_user',$id);
 			$this -> db -> or_where('friends.id_friend',$id);
+			$this -> db -> where('status','T');
 			$query = $this->db->get();  
 			return $query;  
 		}

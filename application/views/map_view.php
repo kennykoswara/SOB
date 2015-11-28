@@ -53,6 +53,12 @@
 									<li>
 										<a href="<?php echo site_url('map_control') ?>"><i class="glyphicon glyphicon-map-marker"></i> Map</a>
 									</li>
+									<li>
+										<a href="<?php echo site_url('mission_control') ?>"><i class="glyphicon glyphicon-list-alt"></i> Missions</a>
+									</li>
+									<li>
+										<a href="<?php echo site_url('request_control') ?>"><i class="glyphicon glyphicon-tasks"></i> Requests</a>
+									</li>
 								</ul>
 								<ul class="nav navbar-nav navbar-right">
 									<li class="dropdown">
@@ -191,7 +197,16 @@
 						icon: icons["<?php echo $type ?>"].icon
 					});
 					google.maps.event.addListener(marker, 'click', function() {
-						window.location.href = marker.url;
+						//alert(<?php echo $row->id ?>);
+						var id = <?php echo $row->id ?> ;
+						var id_requestor = <?php echo $row->id_user ?> ;
+						$.ajax
+						({
+							type: "POST",
+							url: "<?php echo site_url('map_control/book_mission/"+id+"/"+id_requestor+"'); ?>",
+							data: {},
+							success: function(){ alert('Your mission has been updated');location.reload(); },
+						});
 					});
 					marker.addListener('click', toggleBounce);
 					<?php

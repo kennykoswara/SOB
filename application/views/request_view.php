@@ -1,6 +1,6 @@
 <html>
 	<head>
-		<title> HelpMe - Search </title>
+		<title> HelpMe - Request </title>
 		<link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">
 		<link href="<?php echo base_url();?>asset/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
 		
@@ -117,10 +117,10 @@
 							<a href="<?php echo site_url('map_control') ?>"><i class="glyphicon glyphicon-map-marker"></i> Map</a>
 						</li>
 						<li>
-							<a href="<?php echo site_url('mission_control') ?>"><i class="glyphicon glyphicon-list-alt"></i> Missions</a>
+							<a href="<?php echo site_url('map_control') ?>"><i class="glyphicon glyphicon-list-alt"></i> Missions</a>
 						</li>
 						<li>
-							<a href="<?php echo site_url('request_control') ?>"><i class="glyphicon glyphicon-tasks"></i> Requests</a>
+							<a href="<?php echo site_url('map_control') ?>"><i class="glyphicon glyphicon-tasks"></i> Requests</a>
 						</li>
 					</ul>
 					<ul class="nav navbar-nav navbar-right">
@@ -153,110 +153,69 @@
 			</div>
 			<!--AKHIR-->
 			<div class="padding">
-				<div class="container bootstrap snippet">
-					<div class="row">
-						<div class="col-lg-12">
-							<div class="main-box no-header clearfix">
-								<div class="main-box-body clearfix">
-									<div class="table-responsive">
-										<table class="table user-list">
-											<thead>
-												<tr>
-												<th><span>User</span></th>
-												<th><span>Created</span></th>
-												<th class="text-center"><span>Status</span></th>
-												<th><span>Email</span></th>
-												<th>&nbsp;</th>
-												</tr>
-											</thead>
-											<tbody>
-												<?php
-													foreach ($other_user->result() as $row)  
-													{ ?>
-														<tr>
-															<td>
-																<img src="<?php echo base_url(); echo $row->picture ?>" alt="">
-																<a href="<?php echo site_url('friend_control/index/'.$row->id) ?>" class="user-link"><?php echo $row->username;?></a>
-																<span class="user-subhead">Member</span>
-															</td>
-															<td><?php echo $row->join; ?></td>
-															<td class="text-center">
-																<?php $count_friend =0; 
-																foreach($check_friend->result() as $approval_column)
-																{
-																	if($approval_column->id == $row->id && $approval_column->approval == 'pending' && $count_friend == 0) 
-																	{ ?>
-																		<span class="label label-default">pending</span>
-																	<?php $count_friend++;
-																	} else if ($approval_column->id == $row->id && $approval_column->approval == 'approved' && $count_friend == 0){ ?>
-																		<span class="label label-default">friend</span>
-																	<?php $count_friend++;
-																	}
-																} 
-																foreach($friend_connect->result() as $check)
-																{
-																	if($row->id == $check->id_user && $check->approval == 'pending' && $count_friend == 0)
-																	{ ?>
-																		<span class="label label-default">pending</span>
-																		<?php $count_friend++;
-																	}
-																	else if ($row->id == $check->id_user && $check->approval == 'approved' && $count_friend == 0){ ?>
-																		<span class="label label-default">friend</span>
-																	<?php $count_friend++;
-																	}
-																}?>
-															</td>
-															<td>
-																<a href="#"> <?php echo $row->email; ?> </a>
-																<?php $counter=0; 
-																foreach($check_friend->result() as $column)
-																{
-																	if($column->id != $row->id)
-																		continue;
-																	else 
-																		$counter++;	
-																} 
-																foreach($friend_connect->result() as $check)
-																{
-																	if($row->id == $check->id_user)
-																		$counter++;
-																	else
-																		continue;
-																}
-																if($counter==0)
-																{
-																	echo form_open('home_control/request_friend/'.$row->id);?>
-																			<span><button class="label label-default" type="submit" name="submitForm" value="signup" id="signup"><b>Send Friend Request</b></button></span>
-																		</form>
-																<?php } ?>
-															</td>
-															<td style="width: 20%;">
-																<a href="#" class="table-link">
-																	<span class="fa-stack">
-																		<i class="fa fa-square fa-stack-2x"></i>
-																		<i class="fa fa-search-plus fa-stack-1x fa-inverse"></i>
-																	</span>
-																</a>
-																<a href="#" class="table-link">
-																	<span class="fa-stack">
-																		<i class="fa fa-square fa-stack-2x"></i>
-																		<i class="fa fa-pencil fa-stack-1x fa-inverse"></i>
-																	</span>
-																</a>
-																<a href="#" class="table-link danger">
-																	<span class="fa-stack">
-																		<i class="fa fa-square fa-stack-2x"></i>
-																		<i class="fa fa-trash-o fa-stack-1x fa-inverse"></i>
-																	</span>
-																</a>
-															</td>
-														</tr>
-													<?php } ?>
-											</tbody>
-										</table>
-									</div>
+				<div class="panel panel-info">
+					<div class="panel-heading">
+						<div class="well">
+							<h4>My Request List</h4>
+							<?php foreach ($list->result() as $row)
+							{ ?>
+								<?php if ($row->type == 'urgent'): ?>
+									<div class="panel panel-danger">
+								<?php elseif ($row->type == 'medium'): ?>
+									<div class="panel panel-warning" >
+								<?php else: ?>
+									<div class="panel panel-success">
+								<?php endif; ?>
+								<div class="panel-heading">
+									<!--<a href="#" class="pull-right">View all</a>-->
+									<h3> <?php echo $row->request; ?> </h3>
+									<!--<h4>Bootply Editor &amp; Code Library</h4>-->
 								</div>
-							</div>
+								<div class="panel-body">
+									<p>
+										<img src="<?php echo base_url(); echo $row->picture ?>" class="img-circle pull-left">
+										<div>
+											<a href="#" style="padding-left:1cm;"> <b> <?php echo $row->name ?> </b></a>
+											</br>
+											<font color="grey" size=2 style="padding-left:1cm;"> <?php echo $row->accept_date ?> </font>
+											<div style="padding-top:10">
+												<?php if ($row->type == 'urgent'): ?>
+													<span class="label label-danger" style="margin-left:1cm">Urgent</span>
+												<?php elseif ($row->type == 'medium'): ?>
+													<span class="label label-warning" style="margin-left:1cm">Medium</span>
+												<?php else: ?>
+													<span class="label label-success" style="margin-left:1cm">Easy</span>
+												<?php endif; ?>
+												
+												<?php if ($row->request_stat == 'taken'): ?>
+													<span class="label label-warning" style="margin-left:1cm"><?php echo $row->request_stat; ?></span>
+												<?php elseif ($row->request_stat == 'accomplished'): ?>
+													<span class="label label-success" style="margin-left:1cm"><?php echo $row->request_stat; ?></span>
+												<?php else: ?>
+													<span class="label label-danger" style="margin-left:1cm"><?php echo $row->request_stat; ?></span>
+												<?php endif; ?>
+												<div style="padding-top:10; padding-left:9%"">
+													Taken by: <?php echo $row->username; ?>
+												</div>
+												<div style="padding-top:15; padding-left:9%">
+													<select id="mySelect_<?php echo $row->id_acceptor; ?>_<?php echo $row->id_marker; ?>">
+														  <option value="" disabled selected hidden>Mark Mission</option>
+														  <option>accept</option>
+														  <option>decline</option>
+														  <option>delete</option>
+													</select>
+												</div>
+											</div>
+										</div>
+									</p>
+									<div class="clearfix"></div>
+									<hr>
+									<?php echo $row->description ?>
+									</div>
+									</div>
+									<?php } ?>
+								</div>
+							<br/>
 						</div>
 					</div>
 				</div>
@@ -277,7 +236,7 @@
 					$.ajax
 					({
 						type: "POST",
-						url: "<?php echo site_url('profile_control/approve_request/"+id+"'); ?>",
+						url: "<?php echo site_url('mission_control/approve_request/"+id+"'); ?>",
 						data: {},
 						success: function(){ location.reload(); },
 					});
@@ -286,7 +245,43 @@
 				{
 					$.ajax({
 						type: "POST",
-						url: "<?php echo site_url('profile_control/remove_friend_request/"+id+"'); ?>",
+						url: "<?php echo site_url('mission_control/remove_friend_request/"+id+"'); ?>",
+						data: {},
+						success: function(){ location.reload(); },
+					});
+				}
+			});
+		</script>
+		<script>
+			$('select').on('change', function() {
+				var full_id = this.id;
+				var temp = full_id.split("_");
+				var id = temp[1];
+				var type = this.value;
+				var mark = temp[2];
+				if(type == 'accept')
+				{
+					$.ajax({
+						type: "POST",
+						url: "<?php echo site_url('request_control/score_plus/"+id+"/"+mark+"'); ?>",
+						data: {},
+						success: function(){ location.reload(); },
+					});
+				}
+				else if(type == 'decline')
+				{
+					$.ajax({
+						type: "POST",
+						url: "<?php echo site_url('request_control/score_minus/"+id+"/"+mark+"'); ?>",
+						data: {},
+						success: function(){ location.reload(); },
+					});
+				}
+				else
+				{
+					$.ajax({
+						type: "POST",
+						url: "<?php echo site_url('request_control/delete_mission/"+id+"/"+mark+"'); ?>",
 						data: {},
 						success: function(){ location.reload(); },
 					});

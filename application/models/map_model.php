@@ -37,4 +37,16 @@ class map_model extends CI_Model {
 		$this->db->where('id_friend', $id_user);
 		$this->db->update('friends', $data);
 	}
+	public function add_book($id_mission, $id_requestor, $id_acceptor, $datetime)
+	{
+		$data=array(
+			'id_marker'=>$id_mission,
+			'id_requestor'=>$id_requestor,
+			'id_acceptor'=>$id_acceptor,
+			'accept_date'=>$datetime,
+			'request_stat'=>'taken'
+		);
+		$this->db->insert('mission',$data);
+		return true;
+	}
 }
