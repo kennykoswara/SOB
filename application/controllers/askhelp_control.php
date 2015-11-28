@@ -22,6 +22,8 @@ class askhelp_control extends CI_Controller {
 			$this->form_validation->set_rules('my_lat', 'my_lat', 'trim|required|xss_clean');
 			$this->form_validation->set_rules('my_long', 'my_long', 'trim|required|xss_clean');
 			$data['markers'] = $this->askhelp_model->select_markers();
+			$session_data = $this->session->userdata('logged_in');
+			$data['request_list']=$this->askhelp_model->request_list($session_data['id']);
 			if($this->form_validation->run() == FALSE)
 			{
 				$this->load->view('askhelp_view',$data);
@@ -50,5 +52,16 @@ class askhelp_control extends CI_Controller {
 			redirect('login_control', 'refresh');
 		}
 	}
-
+	public function remove_friend_request($id)
+	{
+		$session_data = $this->session->userdata('logged_in');
+		$id_user = $session_data['id'];
+		$this->askhelp_model->remove_friend_request($id, $id_user);
+	}
+	public function approve_request($id)
+	{
+		$session_data = $this->session->userdata('logged_in');
+		$id_user = $session_data['id'];
+		$this->askhelp_model->update_approval($id, $id_user);
+	}
 }

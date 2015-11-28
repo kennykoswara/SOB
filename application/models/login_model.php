@@ -41,7 +41,7 @@ class login_model extends CI_Model {
 		}
 	}
 	
-	public function add_user()
+	public function add_user($date)
 	{
 		$data=array(
 			'name'=>$this->input->post('fullName'),
@@ -50,6 +50,8 @@ class login_model extends CI_Model {
 			'city'=>$this->input->post('city'),
 			'country'=>$this->input->post('country'),
 			'username'=>$this->input->post('fullName'),
+			'picture' =>'asset/uploads/default.png',
+			'join'=>$date,
 			'password'=>md5($this->input->post('passWord'))
 		);
 		$this->db->insert('user_info',$data);

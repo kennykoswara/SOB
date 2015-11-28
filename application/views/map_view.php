@@ -32,7 +32,7 @@
 								<a href="/" class="navbar-brand logo">b</a>
 							</div>
 							<nav class="collapse navbar-collapse" role="navigation">
-								<form class="navbar-form navbar-left" action="<?=site_url('home_control/search')?>" method="post">
+								<form class="navbar-form navbar-left" action="<?=site_url('home_control/search')?>" method="get">
 									<div class="input-group input-group-sm" style="max-width:360px;">
 										<input type="text" class="form-control" placeholder="Search" name="search-term" id="srch-term">
 										<div class="input-group-btn">
@@ -48,23 +48,37 @@
 										<a href="<?php echo site_url('profile_control') ?>"><i class="glyphicon glyphicon-th-large"></i> Profile</a>
 									</li>
 									<li>
-										<a href="<?php echo site_url('askhelp_control') ?>"><i class="glyphicon glyphicon-map-marker"></i> AskHelp</a>
+										<a href="<?php echo site_url('askhelp_control') ?>"><i class="glyphicon glyphicon-bullhorn"></i> AskHelp</a>
 									</li>
 									<li>
-										<a href="<?php echo site_url('map_control') ?>"><i class="glyphicon glyphicon-road"></i> Map</a>
+										<a href="<?php echo site_url('map_control') ?>"><i class="glyphicon glyphicon-map-marker"></i> Map</a>
 									</li>
 								</ul>
 								<ul class="nav navbar-nav navbar-right">
-								  <li class="dropdown">
-									<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="glyphicon glyphicon-user"></i></a>
-									<ul class="dropdown-menu">
-									  <li><a href="">More</a></li>
-									  <li><a href="">More</a></li>
-									  <li><a href="">More</a></li>
-									  <li><a href="">More</a></li>
-									  <li><a href="<?php echo site_url('home_control/logout') ?>">Log out</a></li>
-									</ul>
-								  </li>
+									<li class="dropdown">
+										<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="glyphicon glyphicon-comment"></i></a>
+										<ul class="dropdown-menu" id="topNav">
+											<?php foreach ($request_list->result() as $notification)
+											{
+												if($notification->approval == 'pending' && $notification->status == 'F')
+												{?>
+													<li><a href=""> <?php echo $notification->id ?> </a></li>
+													<button id="button_<?php echo $notification->id; ?>"> Confirm </button>
+													<button id="delete_<?php echo $notification->id; ?>"> Delete </button>
+												<?php } 
+											} ?>
+										</ul>
+									</li>
+									<li class="dropdown">
+										<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="glyphicon glyphicon-user"></i></a>
+										<ul class="dropdown-menu">
+											<li><a href="">More</a></li>
+											<li><a href="">More</a></li>
+											<li><a href="">More</a></li>
+											<li><a href="">More</a></li>
+											<li><a href="<?php echo site_url('home_control/logout') ?>">Log out</a></li>
+										</ul>
+									</li>
 								</ul>
 							</nav>
 						</div>
@@ -219,7 +233,31 @@
 		<script src="<?php echo base_url();?>asset/foundation/js/foundation.min.js" type="text/javascript"></script>
 		<script src="<?php echo base_url();?>asset/foundation/js/foundation/foundation.slider.js" type="text/javascript"></script>
 		<script>
-		  $(document).foundation();
+			$("button").click(function() {
+				var full_id = this.id;
+				var temp = full_id.split("_");
+				var id = temp[1];
+				var type = temp[0];
+				if(type == 'button')
+				{
+					$.ajax
+					({
+						type: "POST",
+						url: "<?php echo site_url('profile_control/approve_request/"+id+"'); ?>",
+						data: {},
+						success: function(){ location.reload(); },
+					});
+				} 
+				else if(type == 'delete')
+				{
+					$.ajax({
+						type: "POST",
+						url: "<?php echo site_url('profile_control/remove_friend_request/"+id+"'); ?>",
+						data: {},
+						success: function(){ location.reload(); },
+					});
+				}
+			});
 		</script>
 
 	</body>

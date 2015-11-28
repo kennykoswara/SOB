@@ -13,6 +13,12 @@
 	<![endif]-->
 	<link href="<?php echo base_url();?>asset/home/css/styles.css" rel="stylesheet" type="text/css"/>
 </head>
+<style>
+#topNav{
+   max-height:110px;/* you can change as you need it */
+   overflow:auto;/* to get scroll */
+}
+</style>
 <body>
 	<div class="wrapper">
 		<div class="box">
@@ -34,7 +40,7 @@
 							<a href="/" class="navbar-brand logo">b</a>
 						</div>
 						<nav class="collapse navbar-collapse" role="navigation">
-							<form class="navbar-form navbar-left" action="<?=site_url('home_control/search')?>" method="post">
+							<form class="navbar-form navbar-left" action="<?=site_url('home_control/search')?>" method="get">
 								<div class="input-group input-group-sm" style="max-width:360px;">
 									<input type="text" class="form-control" placeholder="Search" name="search-term" id="srch-term">
 									<div class="input-group-btn">
@@ -50,13 +56,27 @@
 										<a href="<?php echo site_url('profile_control') ?>"><i class="glyphicon glyphicon-th-large"></i> Profile</a>
 									</li>
 									<li>
-										<a href="<?php echo site_url('askhelp_control') ?>"><i class="glyphicon glyphicon-map-marker"></i> AskHelp</a>
+										<a href="<?php echo site_url('askhelp_control') ?>"><i class="glyphicon glyphicon-bullhorn"></i> AskHelp</a>
 									</li>
 									<li>
-										<a href="<?php echo site_url('map_control') ?>"><i class="glyphicon glyphicon-road"></i> Map</a>
+										<a href="<?php echo site_url('map_control') ?>"><i class="glyphicon glyphicon-map-marker"></i> Map</a>
 									</li>
 								</ul>
 							<ul class="nav navbar-nav navbar-right">
+								<li class="dropdown">
+									<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="glyphicon glyphicon-comment"></i></a>
+									<ul class="dropdown-menu" id="topNav">
+										<?php foreach ($request_list->result() as $notification)
+										{
+											if($notification->approval == 'pending' && $notification->status == 'F')
+											{?>
+												<li><a href=""> <?php echo $notification->id ?> </a></li>
+												<button id="button_<?php echo $notification->id; ?>"> Confirm </button>
+												<button id="delete_<?php echo $notification->id; ?>"> Delete </button>
+											<?php } 
+										} ?>
+									</ul>
+								</li>
 								<li class="dropdown">
 									<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="glyphicon glyphicon-user"></i></a>
 									<ul class="dropdown-menu">
@@ -125,11 +145,22 @@
 												<div class="rating" style="float:left">
 													<span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
 												</div>
+												<?php foreach ($friend_request->result() as $friend_req)
+												{
+													if($friend_req->id == $id && $friend_req->approval == 'pending')
+													{ ?>
+														<form action="<?=site_url('friend_control/approve_request/'.$friend_req->id)?>" method="POST">
+															<button type="submit" class="label label-default"> Approve Friend Request </button>
+														</form>
+													<?php } else if($friend_req->id == $id && $friend_req->approval == 'approved'){ ?>
+														<span class="label label-default"> Friend </span>
+													<?php } 
+												 } ?>
 												<?php foreach ($request->result() as $type)
 												{ 
 													if($type->request == 'send' && $type->approval == 'pending')
 													{ ?>
-													<form action="<?=site_url('friend_control/change_request/'.$id)?>" method="POST">
+													<form action="<?=site_url('friend_control/remove_request/'.$id)?>" method="POST">
 														<button type="submit" class="label label-default"> Cancel request </button>
 													</form>
 													<?php } else if($type->request == 'send' && $type->approval == 'approved'){ ?>
@@ -211,7 +242,7 @@
 														</div>
 														<div class="panel-body">
 															<p>
-																<img src="//placehold.it/150x150" class="img-circle pull-left">
+																<img src="<?php echo base_url(); echo $row->picture ?>" class="img-circle pull-left">
 																<div>
 																	<a href="#" style="padding-left:1cm;"> <b> <?php echo $row->name ?> </b></a>
 																</br>
@@ -348,5 +379,34 @@
 				<script src="<?php echo base_url();?>asset/js/jquery-2.1.4.min.js" type="text/javascript"></script>
 				<script src="<?php echo base_url();?>asset/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
 				<script src="<?php echo base_url();?>asset/home/js/scripts.js" type="text/javascript"></script>
+				<script>
+
+				$("button").click(function() {
+					var full_id = this.id;
+					var temp = full_id.split("_");
+					var id = temp[1];
+					var type = temp[0];
+					if(type == 'button')
+					{
+						$.ajax({
+							type: "POST",
+							url: "<?php echo site_url('friend_control/approve_request/"+id+"'); ?>",
+							data: {},
+							success: function(){ location.reload(); },
+						});
+					} 
+					else if(type == 'delete')
+					{
+						$.ajax({
+							type: "POST",
+							url: "<?php echo site_url('friend_control/remove_friend_request/"+id+"'); ?>",
+							data: {},
+							success: function(){ location.reload(); },
+						});
+					}
+				});
+
+				
+				</script>
 			</body>
 			</html>

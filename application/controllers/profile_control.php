@@ -19,6 +19,7 @@ class profile_control extends CI_Controller {
 			$id = $session_data['id'];
 			$data['post']=$this->profile_model->post_select($id);
 			$data['user']=$this->profile_model->user_select($id);
+			$data['request_list']=$this->profile_model->request_list($id);
 			$this->load->view('profile_view', $data);
 		}
 		else
@@ -60,33 +61,19 @@ class profile_control extends CI_Controller {
 		$location = "asset/uploads/$myuser";
 		
 		
-		$config['image_library'] = 'gd2';
-        $config['source_image'] = $location; 
-        $config['create_thumb'] = FALSE;
-        $config['new_image'] = 'thumb_'.$myuser;
-        $config['maintain_ratio'] = TRUE;
-        $config['width']     = 50;
-        $config['height']   = 50;
-        $this->load->library('image_lib', $config); 
-        $this->image_lib->resize();
-        $this->image_lib->clear();
-		
-		
-		
-		$config['image_library'] = 'gd2';
-        $config['source_image'] = $location; 
-        $config['create_thumb'] = FALSE;
-        $config['new_image'] = 'profile_'.$myuser;
-        $config['maintain_ratio'] = TRUE;
-        $config['width']     = 200;
-        $config['height']   = 200;
-        $this->image_lib->initialize($config);
-        $this->image_lib->resize();
-        $this->image_lib->clear();
-		
-		
-		
 		$adding=$this->profile_model->add_picture($location, $user_now);
 		redirect('profile_control','refresh');
+	}
+	public function remove_friend_request($id)
+	{
+		$session_data = $this->session->userdata('logged_in');
+		$id_user = $session_data['id'];
+		$this->profile_model->remove_friend_request($id, $id_user);
+	}
+	public function approve_request($id)
+	{
+		$session_data = $this->session->userdata('logged_in');
+		$id_user = $session_data['id'];
+		$this->profile_model->update_approval($id, $id_user);
 	}
 }

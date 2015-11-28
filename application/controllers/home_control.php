@@ -22,6 +22,7 @@ class home_control extends CI_Controller {
 			$id = $session_data['id'];
 			$data['post']=$this->home_model->post_select($id);
 			$data['friend_post']=$this->home_model->check_post($id);
+			$data['request_list']=$this->home_model->request_list($id);
 			$data['user_id'] = $id;
 			$this->load->view('home_view', $data);
 		}
@@ -32,11 +33,12 @@ class home_control extends CI_Controller {
 	}
 	public function search()
 	{
-		$term = $this->input->post('search-term');
+		$term = $this->input->get('search-term');
 		$session_data = $this->session->userdata('logged_in');
 		$data['other_user']=$this->home_model->select($term, $session_data['id']);
 		$data['check_friend']=$this->home_model->check_friend($session_data['id']);
 		$data['friend_connect']=$this->home_model->check_post($session_data['id']);
+		$data['request_list']=$this->home_model->request_list($session_data['id']);
 		$this->load->view('search_view', $data);
 	}
 	public function logout()
@@ -62,5 +64,17 @@ class home_control extends CI_Controller {
 		{
 			redirect('home_control', 'refresh');
 		}
+	}
+	public function remove_friend_request($id)
+	{
+		$session_data = $this->session->userdata('logged_in');
+		$id_user = $session_data['id'];
+		$this->home_model->remove_friend_request($id, $id_user);
+	}
+	public function approve_request($id)
+	{
+		$session_data = $this->session->userdata('logged_in');
+		$id_user = $session_data['id'];
+		$this->home_model->update_approval($id, $id_user);
 	}
 }

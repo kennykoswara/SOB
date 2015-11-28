@@ -54,6 +54,11 @@
 					</div>
 					<div class="row">
 						<div class="form-group">
+							<input type="text" class="form-control input-lg" id="address" name="address" placeholder="Address" required="true">
+						</div>
+					</div>
+					<div class="row">
+						<div class="form-group">
 							<input type="password" class="form-control input-lg" id="passWord" name="passWord" placeholder="Password" required="true">
 						</div>
 					</div>

@@ -12,6 +12,7 @@ class login_control extends CI_Controller {
 		$this->load->model('login_model','',TRUE);
 		$this->load->library('form_validation');
 		$this->load->library('session');
+		$this->load->helper('date');
 	}
 	public function index()
 	{
@@ -67,7 +68,8 @@ class login_control extends CI_Controller {
 			if( $formSubmit == 'signup' )
 			{
 				$this->form_validation->set_rules('eMail', 'eMail', 'trim|required|xss_clean|callback_email_check');
-				if($this->login_model->add_user())
+				$date = date('Y-m-d', now());
+				if($this->login_model->add_user($date))
 				{
 					$email = $this->input->post('eMail');
 					$name = $this->input->post('fullName');

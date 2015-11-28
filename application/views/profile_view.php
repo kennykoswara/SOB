@@ -34,7 +34,7 @@
 							<a href="/" class="navbar-brand logo">b</a>
 						</div>
 						<nav class="collapse navbar-collapse" role="navigation">
-							<form class="navbar-form navbar-left" action="<?=site_url('home_control/search')?>" method="post">
+							<form class="navbar-form navbar-left" action="<?=site_url('home_control/search')?>" method="get">
 								<div class="input-group input-group-sm" style="max-width:360px;">
 									<input type="text" class="form-control" placeholder="Search" name="search-term" id="srch-term">
 									<div class="input-group-btn">
@@ -50,13 +50,27 @@
 										<a href="<?php echo site_url('profile_control') ?>"><i class="glyphicon glyphicon-th-large"></i> Profile</a>
 									</li>
 									<li>
-										<a href="<?php echo site_url('askhelp_control') ?>"><i class="glyphicon glyphicon-map-marker"></i> AskHelp</a>
+										<a href="<?php echo site_url('askhelp_control') ?>"><i class="glyphicon glyphicon-bullhorn"></i> AskHelp</a>
 									</li>
 									<li>
-										<a href="<?php echo site_url('map_control') ?>"><i class="glyphicon glyphicon-road"></i> Map</a>
+										<a href="<?php echo site_url('map_control') ?>"><i class="glyphicon glyphicon-map-marker"></i> Map</a>
 									</li>
 								</ul>
 							<ul class="nav navbar-nav navbar-right">
+								<li class="dropdown">
+									<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="glyphicon glyphicon-comment"></i></a>
+									<ul class="dropdown-menu" id="topNav">
+										<?php foreach ($request_list->result() as $notification)
+										{
+											if($notification->approval == 'pending' && $notification->status == 'F')
+											{?>
+												<li><a href=""> <?php echo $notification->id ?> </a></li>
+												<button id="button_<?php echo $notification->id; ?>"> Confirm </button>
+												<button id="delete_<?php echo $notification->id; ?>"> Delete </button>
+											<?php } 
+										} ?>
+									</ul>
+								</li>
 								<li class="dropdown">
 									<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="glyphicon glyphicon-user"></i></a>
 									<ul class="dropdown-menu">
@@ -114,25 +128,25 @@
 															</form>
 														</div>													
 													</div>
-												<?php } ?>
-											</div>
-											<div class="col-md-offset-1 col-md-7">
-												<p>
-													E-mail :
-												</p>
-												<p>
-													Specification :
-												</p>
-												<p>
-													Area :
-												</p>
-												<p>
-													Helpful Rate :
-												</p>
-												<div class="rating" style="float:left">
-													<span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
 												</div>
-											</div>
+												<div class="col-md-offset-1 col-md-7">
+													<p>
+														E-mail : <?php echo $column->email; ?>
+													</p>
+													<p>
+														Specification :
+													</p>
+													<p>
+														Area : <?php echo $column->address; ?>
+													</p>
+													<p>
+														Helpful Rate :
+													</p>
+													<div class="rating" style="float:left">
+														<span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
+													</div>
+												</div>
+											<?php } ?>
 										</div>
 									</div>
 
@@ -158,21 +172,10 @@
 									</div>
 
 									<div class="panel panel-default">
-										<div class="panel-heading"><a href="#" class="pull-right">View all</a> <h4>More Templates</h4></div>
-										<div class="panel-body">
-											<img src="//placehold.it/150x150" class="img-circle pull-right"> <a href="#">Free @Bootply</a>
-											<div class="clearfix"></div>
-											There a load of new free Bootstrap 3 ready templates at Bootply. All of these templates are free and don't require extensive customization to the Bootstrap baseline.
-											<hr>
-											<ul class="list-unstyled"><li><a href="http://www.bootply.com/templates">Dashboard</a></li><li><a href="http://www.bootply.com/templates">Darkside</a></li><li><a href="http://www.bootply.com/templates">Greenfield</a></li></ul>
-										</div>
-									</div>
-
-									<div class="panel panel-default">
 										<div class="panel-heading"><h4>What Is Bootstrap?</h4></div>
 										<div class="panel-body">
 											Bootstrap is front end frameworkto build custom web applications that are fast, responsive &amp; intuitive. It consist of CSS and HTML for typography, forms, buttons, tables, grids, and navigation along with custom-built jQuery plug-ins and support for responsive layouts. With dozens of reusable components for navigation, pagination, labels, alerts etc..                          </div>
-										</div>
+									</div>
 
 
 
@@ -182,54 +185,48 @@
 									<div class="col-sm-7">
 
 										<div class="well">
-											<form class="form">
-												<h4>Sign-up</h4>
-												<div class="input-group text-center">
-													<input type="text" class="form-control input-lg" placeholder="Enter your email address">
-													<span class="input-group-btn"><button class="btn btn-lg btn-primary" type="button">OK</button></span>
-												</div>
-											</form>
-										</div>
+											<h4>What's Happened</h4>
+											<br/>
 										
 										<?php foreach ($post->result() as $row)
 										{ ?>
 											<?php if ($row->type == 'urgent'): ?>
-												<div class="panel panel-danger">
-												<?php elseif ($row->type == 'medium'): ?>
-													<div class="panel panel-warning">
-													<?php else: ?>
-														<div class="panel panel-success">
-														<?php endif; ?>
-														<div class="panel-heading">
-															<!--<a href="#" class="pull-right">View all</a>-->
-															<h3> <?php echo $row->request; ?> </h3>
-															<!--<h4>Bootply Editor &amp; Code Library</h4>-->
+												<div class="panel panel-danger" style="cursor: pointer;">
+											<?php elseif ($row->type == 'medium'): ?>
+												<div class="panel panel-warning" style="cursor: pointer;">
+											<?php else: ?>
+												<div class="panel panel-success" style="cursor: pointer;">
+											<?php endif; ?>
+											<div class="panel-heading">
+												<!--<a href="#" class="pull-right">View all</a>-->
+												<h3> <?php echo $row->request; ?> </h3>
+												<!--<h4>Bootply Editor &amp; Code Library</h4>-->
+											</div>
+											<div class="panel-body">
+												<p>
+													<img src="<?php echo base_url(); echo $row->picture ?>" class="img-circle pull-left">
+													<div>
+														<a href="#" style="padding-left:1cm;"> <b> <?php echo $row->name ?> </b></a>
+														</br>
+														<font color="grey" size=2 style="padding-left:1cm;"> <?php echo $row->post_time ?> </font>
+														<div>
+															<?php if ($row->type == 'urgent'): ?>
+																<span class="label label-danger" style="margin-left:1cm">Urgent</span>
+															<?php elseif ($row->type == 'medium'): ?>
+																<span class="label label-warning" style="margin-left:1cm">Medium</span>
+															<?php else: ?>
+																<span class="label label-success" style="margin-left:1cm">Easy</span>
+															<?php endif; ?>
 														</div>
-														<div class="panel-body">
-															<p>
-																<img src="//placehold.it/150x150" class="img-circle pull-left">
-																<div>
-																	<a href="#" style="padding-left:1cm;"> <b> <?php echo $row->name ?> </b></a>
-																</br>
-																<font color="grey" size=2 style="padding-left:1cm;"> <?php echo $row->post_time ?> </font>
-																<div>
-																	<?php if ($row->type == 'urgent'): ?>
-																		<span class="label label-danger" style="margin-left:1cm">Urgent</span>
-																	<?php elseif ($row->type == 'medium'): ?>
-																		<span class="label label-warning" style="margin-left:1cm">Medium</span>
-																	<?php else: ?>
-																		<span class="label label-success" style="margin-left:1cm">Easy</span>
-																	<?php endif; ?>
-																</div>
-															</div>
-														</p>
-														<div class="clearfix"></div>
-														<hr>
-														<?php echo $row->description ?>
 													</div>
-												</div>
-												<?php } ?>
-
+												</p>
+												<div class="clearfix"></div>
+													<hr>
+													<?php echo $row->description ?>
+											</div>
+											</div>
+										<?php } ?>
+										</div>
 												<div class="panel panel-default">
 													<div class="panel-heading"><a href="#" class="pull-right">View all</a> <h4>Stackoverflow</h4></div>
 													<div class="panel-body">
@@ -344,5 +341,33 @@
 				<script src="<?php echo base_url();?>asset/js/jquery-2.1.4.min.js" type="text/javascript"></script>
 				<script src="<?php echo base_url();?>asset/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
 				<script src="<?php echo base_url();?>asset/home/js/scripts.js" type="text/javascript"></script>
+				<script>
+					$("button").click(function() {
+						var full_id = this.id;
+						var temp = full_id.split("_");
+						var id = temp[1];
+						var type = temp[0];
+						if(type == 'button')
+						{
+							$.ajax
+							({
+								type: "POST",
+								url: "<?php echo site_url('profile_control/approve_request/"+id+"'); ?>",
+								data: {},
+								success: function(){ location.reload(); },
+							});
+						} 
+						else if(type == 'delete')
+						{
+							$.ajax
+							({
+								type: "POST",
+								url: "<?php echo site_url('profile_control/remove_friend_request/"+id+"'); ?>",
+								data: {},
+								success: function(){ location.reload(); },
+							});
+						}
+					});
+				</script>
 			</body>
 			</html>
