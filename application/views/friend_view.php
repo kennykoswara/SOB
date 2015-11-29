@@ -71,15 +71,28 @@
 							</ul>
 							<ul class="nav navbar-nav navbar-right">
 								<li class="dropdown">
-									<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="glyphicon glyphicon-comment"></i></a>
-									<ul class="dropdown-menu" id="topNav">
+									<a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"><i class="glyphicon glyphicon-comment"></i></a>
+									<ul class="dropdown-menu" style="min-width:8cm !important" id="topNav">
 										<?php foreach ($request_list->result() as $notification)
 										{
 											if($notification->approval == 'pending' && $notification->status == 'F')
 											{?>
-												<li><a href="<?php echo site_url('friend_control/index/'.$notification->id) ?>"> <?php echo $notification->username ?> </a></li>
-												<button id="button_<?php echo $notification->id; ?>"> Confirm </button>
-												<button id="delete_<?php echo $notification->id; ?>"> Delete </button>
+												<li>
+													<div style="padding-left:0" class="container-fluid">
+														<a href="<?php echo site_url('friend_control/index/'.$notification->id) ?>">
+														<div class="col-xs-6">
+															<?php echo $notification->username ?>
+														</div>
+													</a>
+														<div class="col-xs-6">
+															<button id="button_<?php echo $notification->id; ?>" class="btn btn-success btn-xs" type="button"> Confirm </button>
+															<button id="delete_<?php echo $notification->id; ?>" class="btn btn-danger btn-xs" type="button"> Delete </button>
+														</div>
+													</div>
+												</li>
+												<?php if(end($request_list->result()) !== $notification) { ?> <li role="separator" class="divider"></li>
+												<?php } ?>
+
 												<?php }
 											} ?>
 										</ul>
@@ -156,7 +169,7 @@
 																	<button type="submit" class="label label-default"> Approve Friend Request </button>
 																</form>
 																<?php } else if($friend_req->id == $id && $friend_req->approval == 'approved'){ ?>
-																	<span class="label label-default"> Friend </span>
+																	<br/><span class="label label-default"> Friend </span>
 																	<?php }
 																} ?>
 																<?php foreach ($request->result() as $type)
@@ -167,7 +180,7 @@
 																			<button type="submit" class="label label-default"> Cancel request </button>
 																		</form>
 																		<?php } else if($type->request == 'send' && $type->approval == 'approved'){ ?>
-																			<span class="label label-default"> Friend </span>
+																			<br/><span class="label label-default"> Friend </span>
 																			<?php } ?>
 																			<?php } ?>
 																		</div>
@@ -178,7 +191,7 @@
 
 															<!-- main col right -->
 															<div class="col-sm-7">
-																
+
 																<div class="well">
 																	<form class="form">
 																		<h4>Sign-up</h4>

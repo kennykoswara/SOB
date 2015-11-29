@@ -159,7 +159,7 @@
 								<div class="col-sm-7">
 
 									<div class="well">
-										<h4>Help Requested by Me</h4>
+										<h4>My Markers</h4>
 										<br/>
 
 										<?php foreach ($post->result() as $row)

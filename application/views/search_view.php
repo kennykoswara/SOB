@@ -127,17 +127,30 @@
 					<ul class="nav navbar-nav navbar-right">
 						<li class="dropdown">
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="glyphicon glyphicon-comment"></i></a>
-							<ul class="dropdown-menu" id="topNav">
+							<ul class="dropdown-menu" style="min-width:8cm !important" id="topNav">
 								<?php foreach ($request_list->result() as $notification)
 								{
 									if($notification->approval == 'pending' && $notification->status == 'F')
 									{?>
-										<li><a href="<?php echo site_url('friend_control/index/'.$notification->id) ?>"> <?php echo $notification->username ?> </a></li>
-										<button id="button_<?php echo $notification->id; ?>"> Confirm </button>
-										<button id="delete_<?php echo $notification->id; ?>"> Delete </button>
-									<?php }
-								} ?>
-							</ul>
+										<li>
+											<div style="padding-left:0" class="container-fluid">
+												<a href="<?php echo site_url('friend_control/index/'.$notification->id) ?>">
+												<div class="col-xs-6">
+													<?php echo $notification->username ?>
+												</div>
+											</a>
+												<div class="col-xs-6">
+													<button id="button_<?php echo $notification->id; ?>" class="btn btn-success btn-xs" type="button"> Confirm </button>
+													<button id="delete_<?php echo $notification->id; ?>" class="btn btn-danger btn-xs" type="button"> Delete </button>
+												</div>
+											</div>
+										</li>
+										<?php if(end($request_list->result()) !== $notification) { ?> <li role="separator" class="divider"></li>
+										<?php } ?>
+
+										<?php }
+									} ?>
+								</ul>
 						</li>
 						<li class="dropdown">
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="glyphicon glyphicon-user"></i></a>
