@@ -48,10 +48,14 @@
 $active_group = 'default';
 $active_record = TRUE;
 
-$db['default']['hostname'] = 'mysql.idhostinger.com';
+/*$db['default']['hostname'] = 'mysql.idhostinger.com';
 $db['default']['username'] = 'u409693557_help';
 $db['default']['password'] = 'Join123';
-$db['default']['database'] = 'u409693557_help';
+$db['default']['database'] = 'u409693557_help'; */
+$db['default']['hostname'] = 'localhost';
+$db['default']['username'] = 'root';
+$db['default']['password'] = '';
+$db['default']['database'] = 'db_synch'; 
 $db['default']['dbdriver'] = 'mysql';
 $db['default']['dbprefix'] = '';
 $db['default']['pconnect'] = TRUE;
