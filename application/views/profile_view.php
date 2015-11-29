@@ -159,7 +159,15 @@
 													Helpful Rate : <?php echo $column->score; ?>
 												</p>
 												<div class="rating" style="float:left">
-													<span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
+												<?php $count_star=0;
+												for($i = 1; $i <= $column->score; $i++)
+												{
+													if($i%20 == 0 && $count_star<=10)
+													{
+														echo '<span>☆</span>';
+														$count_star++;
+													}
+												} ?>
 												</div>
 											</div>
 											<?php } ?>
@@ -225,7 +233,6 @@
 					</div>
 				</div>
 			</div>
-
 			<!-- script references -->
 			<script src="<?php echo base_url();?>asset/js/jquery-2.1.4.min.js" type="text/javascript"></script>
 			<script src="<?php echo base_url();?>asset/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>

@@ -160,7 +160,15 @@
 															Helpful Rate : <?php echo $column->score; ?>
  														</p>
 														<div class="rating" style="float:left">
-															<span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
+															<?php $count_star=0;
+															for($i = 1; $i <= $column->score; $i++)
+															{
+																if($i%20 == 0 && $count_star<=10)
+																{
+																	echo '<span>☆</span>';
+																	$count_star++;
+																}
+															} ?>
 														</div>
 													<?php } ?>
 														<?php foreach ($friend_request->result() as $friend_req)
