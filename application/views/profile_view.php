@@ -143,7 +143,7 @@
 													Area : <?php echo $column->address; ?>
 												</p>
 												<p>
-													Helpful Rate :
+													Helpful Rate : <?php echo $column->score; ?>
 												</p>
 												<div class="rating" style="float:left">
 													<span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>

@@ -48,8 +48,16 @@ class map_control extends CI_Controller {
 		$id = $session_data['id'];
 		if(empty($this->map_model->mission_check($id, $id_mission, $id_requestor)))
 		{
-			$datetime = date('Y-m-d h:i:s', now());
-			$this->map_model->add_book($id_mission, $id_requestor, $id, $datetime);
+			if($id== $id_requestor)
+				echo "yourself";
+			else
+			{
+				$datetime = date('Y-m-d h:i:s', now());
+				$this->map_model->add_book($id_mission, $id_requestor, $id, $datetime);
+				echo "can accept";
+			}
 		}
+		else
+			echo "cannot accept";
 	}
 }

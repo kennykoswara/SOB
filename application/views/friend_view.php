@@ -117,13 +117,14 @@
 									<!-- main col left -->
 									<div class="col-sm-5">
 										<div class="panel panel-info">
-											<div class="panel-heading">
-												Name
-											</div>
-											<div class="panel-body">
-												<div class="col-md-4">
-													<?php foreach ($friend->result() as $column)
-													{ ?>
+											
+											<?php foreach ($friend->result() as $column)
+											{ ?>
+												<div class="panel-heading">
+													<?php echo $column->name; ?>
+												</div>
+													<div class="panel-body">
+														<div class="col-md-4">
 														<div id="thumblist">
 															<a href="#image1">
 																<!--what the user sees before clicking anything-->
@@ -143,24 +144,25 @@
 																</a>
 															</div>
 														</div>
-														<?php } ?>
+														
 													</div>
 													<div class="col-md-offset-1 col-md-7">
 														<p>
-															E-mail :
+															E-mail : <?php echo $column->email; ?>
 														</p>
 														<p>
 															Specification :
 														</p>
 														<p>
-															Area :
+															Area : <?php echo $column->address; ?>
 														</p>
 														<p>
-															Helpful Rate :
-														</p>
+															Helpful Rate : <?php echo $column->score; ?>
+ 														</p>
 														<div class="rating" style="float:left">
 															<span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
 														</div>
+													<?php } ?>
 														<?php foreach ($friend_request->result() as $friend_req)
 														{
 															if($friend_req->id == $id && $friend_req->approval == 'pending')
@@ -193,15 +195,8 @@
 															<div class="col-sm-7">
 
 																<div class="well">
-																	<form class="form">
-																		<h4>Sign-up</h4>
-																		<div class="input-group text-center">
-																			<input type="text" class="form-control input-lg" placeholder="Enter your email address">
-																			<span class="input-group-btn"><button class="btn btn-lg btn-primary" type="button">OK</button></span>
-																		</div>
-																	</form>
-																</div>
-
+																	<h4>Sign-up</h4>
+																	</br>
 																<?php foreach ($post->result() as $row)
 																{ ?>
 																	<?php if ($row->type == 'urgent'): ?>
@@ -240,6 +235,7 @@
 																			</div>
 																		</div>
 																		<?php } ?>
+																		</div>
 																	</div><!-- /col-9 -->
 																</div><!-- /padding -->
 															</div>
