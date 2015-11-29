@@ -37,7 +37,7 @@
 								<span class="icon-bar"></span>
 								<span class="icon-bar"></span>
 							</button>
-							<a href="" class="navbar-brand logo">H</a>
+							<a href="/" class="navbar-brand logo">b</a>
 						</div>
 						<nav class="collapse navbar-collapse" role="navigation">
 							<form class="navbar-form navbar-left" action="<?=site_url('home_control/search')?>" method="get">
@@ -76,16 +76,20 @@
 										{
 											if($notification->approval == 'pending' && $notification->status == 'F')
 											{?>
-												<li><a href=""> <?php echo $notification->id ?> </a></li>
+												<li><a href="<?php echo site_url('friend_control/index/'.$notification->id) ?>"> <?php echo $notification->username ?> </a></li>
 												<button id="button_<?php echo $notification->id; ?>"> Confirm </button>
 												<button id="delete_<?php echo $notification->id; ?>"> Delete </button>
-											<?php }
+											<?php } 
 										} ?>
 									</ul>
 								</li>
 								<li class="dropdown">
 									<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="glyphicon glyphicon-user"></i></a>
 									<ul class="dropdown-menu">
+										<li><a href="">More</a></li>
+										<li><a href="">More</a></li>
+										<li><a href="">More</a></li>
+										<li><a href="">More</a></li>
 										<li><a href="<?php echo site_url('home_control/logout') ?>">Log out</a></li>
 									</ul>
 								</li>
@@ -127,7 +131,7 @@
 																<img src="http://i.imgur.com/6JOeXGB.png" class="exit" />
 																<!--exit button-->
 															</a>
-														</div>
+														</div>													
 													</div>
 												<?php } ?>
 											</div>
@@ -156,10 +160,10 @@
 														</form>
 													<?php } else if($friend_req->id == $id && $friend_req->approval == 'approved'){ ?>
 														<span class="label label-default"> Friend </span>
-													<?php }
+													<?php } 
 												 } ?>
 												<?php foreach ($request->result() as $type)
-												{
+												{ 
 													if($type->request == 'send' && $type->approval == 'pending')
 													{ ?>
 													<form action="<?=site_url('friend_control/remove_request/'.$id)?>" method="POST">
@@ -227,7 +231,7 @@
 												</div>
 											</form>
 										</div>
-
+										
 										<?php foreach ($post->result() as $row)
 										{ ?>
 											<?php if ($row->type == 'urgent'): ?>
@@ -396,7 +400,7 @@
 							data: {},
 							success: function(){ location.reload(); },
 						});
-					}
+					} 
 					else if(type == 'delete')
 					{
 						$.ajax({
@@ -408,7 +412,7 @@
 					}
 				});
 
-
+				
 				</script>
 			</body>
 			</html>

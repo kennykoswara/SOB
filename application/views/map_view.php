@@ -29,7 +29,7 @@
 									<span class="icon-bar"></span>
 									<span class="icon-bar"></span>
 								</button>
-								<a href="" class="navbar-brand logo">H</a>
+								<a href="/" class="navbar-brand logo">b</a>
 							</div>
 							<nav class="collapse navbar-collapse" role="navigation">
 								<form class="navbar-form navbar-left" action="<?=site_url('home_control/search')?>" method="get">
@@ -68,16 +68,20 @@
 											{
 												if($notification->approval == 'pending' && $notification->status == 'F')
 												{?>
-													<li><a href=""> <?php echo $notification->id ?> </a></li>
+													<li><a href="<?php echo site_url('friend_control/index/'.$notification->id) ?>"> <?php echo $notification->username ?> </a></li>
 													<button id="button_<?php echo $notification->id; ?>"> Confirm </button>
 													<button id="delete_<?php echo $notification->id; ?>"> Delete </button>
-												<?php }
+												<?php } 
 											} ?>
 										</ul>
 									</li>
 									<li class="dropdown">
 										<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="glyphicon glyphicon-user"></i></a>
 										<ul class="dropdown-menu">
+											<li><a href="">More</a></li>
+											<li><a href="">More</a></li>
+											<li><a href="">More</a></li>
+											<li><a href="">More</a></li>
 											<li><a href="<?php echo site_url('home_control/logout') ?>">Log out</a></li>
 										</ul>
 									</li>
@@ -105,6 +109,32 @@
 										</div>
 									</div>
 								</div><!--/row-->
+
+								<div class="row">
+									<div class="col-sm-6">
+										<a href="#">Twitter</a> <small class="text-muted">|</small> <a href="#">Facebook</a> <small class="text-muted">|</small> <a href="#">Google+</a>
+									</div>
+								</div>
+
+								<div class="row" id="footer">
+									<div class="col-sm-6">
+									</div>
+									<div class="col-sm-6">
+										<p>
+											<a href="#" class="pull-right">©Copyright 2013</a>
+										</p>
+									</div>
+								</div>
+
+								<hr>
+
+									<h4 class="text-center">
+										<a href="http://bootply.com/96266" target="ext">Download this Template @Bootply</a>
+									</h4>
+
+								<hr>
+
+
 							</div><!-- /col-9 -->
 						</div><!-- /padding -->
 					</div>
@@ -232,7 +262,7 @@
 						data: {},
 						success: function(){ location.reload(); },
 					});
-				}
+				} 
 				else if(type == 'delete')
 				{
 					$.ajax({

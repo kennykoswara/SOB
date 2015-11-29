@@ -31,7 +31,7 @@
 								<span class="icon-bar"></span>
 								<span class="icon-bar"></span>
 							</button>
-							<a href="" class="navbar-brand logo">H</a>
+							<a href="/" class="navbar-brand logo">b</a>
 						</div>
 						<nav class="collapse navbar-collapse" role="navigation">
 							<form class="navbar-form navbar-left" action="<?=site_url('home_control/search')?>" method="get">
@@ -70,16 +70,20 @@
 										{
 											if($notification->approval == 'pending' && $notification->status == 'F')
 											{?>
-												<li><a href=""> <?php echo $notification->id ?> </a></li>
+												<li><a href="<?php echo site_url('friend_control/index/'.$notification->id) ?>"> <?php echo $notification->username ?> </a></li>
 												<button id="button_<?php echo $notification->id; ?>"> Confirm </button>
 												<button id="delete_<?php echo $notification->id; ?>"> Delete </button>
-											<?php }
+											<?php } 
 										} ?>
 									</ul>
 								</li>
 								<li class="dropdown">
 									<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="glyphicon glyphicon-user"></i></a>
 									<ul class="dropdown-menu">
+										<li><a href="">More</a></li>
+										<li><a href="">More</a></li>
+										<li><a href="">More</a></li>
+										<li><a href="">More</a></li>
 										<li><a href="<?php echo site_url('home_control/logout') ?>">Log out</a></li>
 									</ul>
 								</li>
@@ -128,7 +132,7 @@
 
 																<input id = "browse_submit" type="submit" value="upload" style="text-align: center; position: absolute;left:42%;margin-top:30px;">
 															</form>
-														</div>
+														</div>													
 													</div>
 												</div>
 												<div class="col-md-offset-1 col-md-7">
@@ -189,7 +193,7 @@
 										<div class="well">
 											<h4>What's Happened</h4>
 											<br/>
-
+										
 										<?php foreach ($post->result() as $row)
 										{ ?>
 											<?php if ($row->type == 'urgent'): ?>
@@ -229,6 +233,82 @@
 											</div>
 										<?php } ?>
 										</div>
+												<div class="panel panel-default">
+													<div class="panel-heading"><a href="#" class="pull-right">View all</a> <h4>Stackoverflow</h4></div>
+													<div class="panel-body">
+														<img src="//placehold.it/150x150" class="img-circle pull-right"> <a href="#">Keyword: Bootstrap</a>
+														<div class="clearfix"></div>
+														<hr>
+
+														<p>If you're looking for help with Bootstrap code, the <code>twitter-bootstrap</code> tag at <a href="http://stackoverflow.com/questions/tagged/twitter-bootstrap">Stackoverflow</a> is a good place to find answers.</p>
+
+														<hr>
+														<form>
+															<div class="input-group">
+																<div class="input-group-btn">
+																	<button class="btn btn-default">+1</button><button class="btn btn-default"><i class="glyphicon glyphicon-share"></i></button>
+																</div>
+																<input type="text" class="form-control" placeholder="Add a comment..">
+															</div>
+														</form>
+
+													</div>
+												</div>
+
+												<div class="panel panel-default">
+													<div class="panel-heading"><a href="#" class="pull-right">View all</a> <h4>Portlet Heading</h4></div>
+													<div class="panel-body">
+														<ul class="list-group">
+															<li class="list-group-item">Modals</li>
+															<li class="list-group-item">Sliders / Carousel</li>
+															<li class="list-group-item">Thumbnails</li>
+														</ul>
+													</div>
+												</div>
+
+												<div class="panel panel-default">
+													<div class="panel-thumbnail"><img src="/assets/example/bg_4.jpg" class="img-responsive"></div>
+													<div class="panel-body">
+														<p class="lead">Social Good</p>
+														<p>1,200 Followers, 83 Posts</p>
+
+														<p>
+															<img src="https://lh6.googleusercontent.com/-5cTTMHjjnzs/AAAAAAAAAAI/AAAAAAAAAFk/vgza68M4p2s/s28-c-k-no/photo.jpg" width="28px" height="28px">
+															<img src="https://lh4.googleusercontent.com/-6aFMDiaLg5M/AAAAAAAAAAI/AAAAAAAABdM/XjnG8z60Ug0/s28-c-k-no/photo.jpg" width="28px" height="28px">
+															<img src="https://lh4.googleusercontent.com/-9Yw2jNffJlE/AAAAAAAAAAI/AAAAAAAAAAA/u3WcFXvK-g8/s28-c-k-no/photo.jpg" width="28px" height="28px">
+														</p>
+													</div>
+												</div>
+
+											</div>
+										</div><!--/row-->
+
+										<div class="row">
+											<div class="col-sm-6">
+												<a href="#">Twitter</a> <small class="text-muted">|</small> <a href="#">Facebook</a> <small class="text-muted">|</small> <a href="#">Google+</a>
+											</div>
+										</div>
+
+										<div class="row" id="footer">
+											<div class="col-sm-6">
+
+											</div>
+											<div class="col-sm-6">
+												<p>
+													<a href="#" class="pull-right">©Copyright 2013</a>
+												</p>
+											</div>
+										</div>
+
+										<hr>
+
+										<h4 class="text-center">
+											<a href="http://bootply.com/96266" target="ext">Download this Template @Bootply</a>
+										</h4>
+
+										<hr>
+
+
 									</div><!-- /col-9 -->
 								</div><!-- /padding -->
 							</div>
@@ -282,7 +362,7 @@
 								data: {},
 								success: function(){ location.reload(); },
 							});
-						}
+						} 
 						else if(type == 'delete')
 						{
 							$.ajax

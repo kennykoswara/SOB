@@ -3,12 +3,12 @@
 		<title> HelpMe - Search </title>
 		<link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">
 		<link href="<?php echo base_url();?>asset/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
-
+		
 		<link href="<?php echo base_url();?>asset/login/css/my_styles.css" rel="stylesheet" type="text/css"/>
 		<meta http-equiv="content-type" content="text/html; charset=UTF-8">
 		<meta name="generator" content="Bootply" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-
+		
 		<!--[if lt IE 9]>
 			<script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
 		<![endif]-->
@@ -17,7 +17,7 @@
 	<style>
 
 	body{
-		background:#eee;
+		background:#eee;    
 	}
 	.main-box.no-header {
 		padding-top: 20px;
@@ -92,7 +92,7 @@
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 					</button>
-					<a href="" class="navbar-brand logo">H</a>
+					<a href="/" class="navbar-brand logo">b</a>
 				</div>
 				<nav class="collapse navbar-collapse" role="navigation">
 					<form class="navbar-form navbar-left" action="<?=site_url('home_control/search')?>" method="get">
@@ -131,16 +131,20 @@
 								{
 									if($notification->approval == 'pending' && $notification->status == 'F')
 									{?>
-										<li><a href=""> <?php echo $notification->id ?> </a></li>
+										<li><a href="<?php echo site_url('friend_control/index/'.$notification->id) ?>"> <?php echo $notification->username ?> </a></li>
 										<button id="button_<?php echo $notification->id; ?>"> Confirm </button>
 										<button id="delete_<?php echo $notification->id; ?>"> Delete </button>
-									<?php }
+									<?php } 
 								} ?>
 							</ul>
 						</li>
 						<li class="dropdown">
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="glyphicon glyphicon-user"></i></a>
 							<ul class="dropdown-menu">
+								<li><a href="">More</a></li>
+								<li><a href="">More</a></li>
+								<li><a href="">More</a></li>
+								<li><a href="">More</a></li>
 								<li><a href="<?php echo site_url('home_control/logout') ?>">Log out</a></li>
 							</ul>
 						</li>
@@ -167,7 +171,7 @@
 											</thead>
 											<tbody>
 												<?php
-													foreach ($other_user->result() as $row)
+													foreach ($other_user->result() as $row)  
 													{ ?>
 														<tr>
 															<td>
@@ -177,10 +181,10 @@
 															</td>
 															<td><?php echo $row->join; ?></td>
 															<td class="text-center">
-																<?php $count_friend =0;
+																<?php $count_friend =0; 
 																foreach($check_friend->result() as $approval_column)
 																{
-																	if($approval_column->id == $row->id && $approval_column->approval == 'pending' && $count_friend == 0)
+																	if($approval_column->id == $row->id && $approval_column->approval == 'pending' && $count_friend == 0) 
 																	{ ?>
 																		<span class="label label-default">pending</span>
 																	<?php $count_friend++;
@@ -188,7 +192,7 @@
 																		<span class="label label-default">friend</span>
 																	<?php $count_friend++;
 																	}
-																}
+																} 
 																foreach($friend_connect->result() as $check)
 																{
 																	if($row->id == $check->id_user && $check->approval == 'pending' && $count_friend == 0)
@@ -204,14 +208,14 @@
 															</td>
 															<td>
 																<a href="#"> <?php echo $row->email; ?> </a>
-																<?php $counter=0;
+																<?php $counter=0; 
 																foreach($check_friend->result() as $column)
 																{
 																	if($column->id != $row->id)
 																		continue;
-																	else
-																		$counter++;
-																}
+																	else 
+																		$counter++;	
+																} 
 																foreach($friend_connect->result() as $check)
 																{
 																	if($row->id == $check->id_user)
@@ -277,7 +281,7 @@
 						data: {},
 						success: function(){ location.reload(); },
 					});
-				}
+				} 
 				else if(type == 'delete')
 				{
 					$.ajax({

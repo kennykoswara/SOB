@@ -27,11 +27,10 @@
 		}
 		public function check_post($id)
 		{
-			$this -> db -> select('id_user, id_friend, approval');
+			$this -> db -> select('id_user, id_friend, approval,status');
 			$this -> db -> from('friends');
 			$this -> db -> where('friends.id_user',$id);
 			$this -> db -> or_where('friends.id_friend',$id);
-			$this -> db -> where('status','T');
 			$query = $this->db->get();  
 			return $query;  
 		}
