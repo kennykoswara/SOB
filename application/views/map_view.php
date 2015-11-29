@@ -176,7 +176,19 @@
 							type: "POST",
 							url: "<?php echo site_url('map_control/book_mission/"+id+"/"+id_requestor+"'); ?>",
 							data: {},
-							success: function(){ alert('Your mission has been updated');location.reload(); },
+							
+							success: function(msg)
+							{ 
+								if(msg=="can accept")
+								{
+									alert('Your mission has been updated');
+									location.reload();
+								}
+								else if(msg=="cannot accept")
+									alert('You have already taken this request');
+								else 
+									alert("You can't accept this request yourself");
+							},
 						});
 					});
 					marker.addListener('click', toggleBounce);

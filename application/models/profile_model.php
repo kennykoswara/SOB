@@ -26,7 +26,7 @@
 		}
 		public function user_select($id)
 		{
-			$this -> db -> select('name, email, address, picture');
+			$this -> db -> select('name, email, address, picture,score');
 			$this -> db -> from('user_info');
 			$this -> db -> where('id', $id);
 			$query = $this->db->get();

@@ -18,7 +18,7 @@
 		} 
 		public function friend_picture($id)  
 		{  
-			$this -> db -> select('picture');
+			$this -> db -> select('picture, name,email,address,score');
 			$this -> db -> from('user_info');
 			$this -> db -> where('id', $id);
 			$query = $this->db->get();  
