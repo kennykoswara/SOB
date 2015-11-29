@@ -3,12 +3,12 @@
 		<title> HelpMe - Request </title>
 		<link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">
 		<link href="<?php echo base_url();?>asset/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
-		
+
 		<link href="<?php echo base_url();?>asset/login/css/my_styles.css" rel="stylesheet" type="text/css"/>
 		<meta http-equiv="content-type" content="text/html; charset=UTF-8">
 		<meta name="generator" content="Bootply" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-		
+
 		<!--[if lt IE 9]>
 			<script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
 		<![endif]-->
@@ -17,7 +17,7 @@
 	<style>
 
 	body{
-		background:#eee;    
+		background:#eee;
 	}
 	.main-box.no-header {
 		padding-top: 20px;
@@ -84,23 +84,24 @@
 	<hr>
 	<body>
 		<div class="column col-sm-10 col-xs-11" id="main">
+			<!-- top nav -->
 			<div class="navbar navbar-blue navbar-static-top">
 				<div class="navbar-header">
 					<button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".navbar-collapse">
-					<span class="sr-only">Toggle</span>
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
+						<span class="sr-only">Toggle</span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
 					</button>
-					<a href="/" class="navbar-brand logo">b</a>
+					<a href="" class="navbar-brand logo">H</a>
 				</div>
 				<nav class="collapse navbar-collapse" role="navigation">
 					<form class="navbar-form navbar-left" action="<?=site_url('home_control/search')?>" method="get">
 						<div class="input-group input-group-sm" style="max-width:360px;">
-						<input type="text" class="form-control" placeholder="Search" name="search-term" id="srch-term">
-						<div class="input-group-btn">
-							<button class="btn btn-default" type="submit" name="searchForm" value="searchForm"><i class="glyphicon glyphicon-search"></i></button>
-						</div>
+							<input type="text" class="form-control" placeholder="Search" name="search-term" id="srch-term">
+							<div class="input-group-btn">
+								<button class="btn btn-default" type="submit" name="searchForm" value="searchForm"><i class="glyphicon glyphicon-search"></i></button>
+							</div>
 						</div>
 					</form>
 					<ul class="nav navbar-nav">
@@ -134,17 +135,13 @@
 										<li><a href="<?php echo site_url('friend_control/index/'.$notification->id) ?>"> <?php echo $notification->username ?> </a></li>
 										<button id="button_<?php echo $notification->id; ?>"> Confirm </button>
 										<button id="delete_<?php echo $notification->id; ?>"> Delete </button>
-									<?php } 
+									<?php }
 								} ?>
 							</ul>
 						</li>
 						<li class="dropdown">
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="glyphicon glyphicon-user"></i></a>
 							<ul class="dropdown-menu">
-								<li><a href="">More</a></li>
-								<li><a href="">More</a></li>
-								<li><a href="">More</a></li>
-								<li><a href="">More</a></li>
 								<li><a href="<?php echo site_url('home_control/logout') ?>">Log out</a></li>
 							</ul>
 						</li>
@@ -186,7 +183,7 @@
 												<?php else: ?>
 													<span class="label label-success" style="margin-left:1cm">Easy</span>
 												<?php endif; ?>
-												
+
 												<?php if ($row->request_stat == 'taken'): ?>
 													<span class="label label-warning" style="margin-left:1cm"><?php echo $row->request_stat; ?></span>
 												<?php elseif ($row->request_stat == 'accomplished'): ?>
@@ -240,7 +237,7 @@
 						data: {},
 						success: function(){ location.reload(); },
 					});
-				} 
+				}
 				else if(type == 'delete')
 				{
 					$.ajax({
