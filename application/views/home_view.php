@@ -70,17 +70,13 @@
 													<li><a href=""> <?php echo $notification->id ?> </a></li>
 													<button id="button_<?php echo $notification->id; ?>"> Confirm </button>
 													<button id="delete_<?php echo $notification->id; ?>"> Delete </button>
-												<?php } 
+												<?php }
 											} ?>
 										</ul>
 									</li>
 									<li class="dropdown">
 										<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="glyphicon glyphicon-user"></i></a>
 										<ul class="dropdown-menu">
-											<li><a href="">More</a></li>
-											<li><a href="">More</a></li>
-											<li><a href="">More</a></li>
-											<li><a href="">More</a></li>
 											<li><a href="<?php echo site_url('home_control/logout') ?>">Log out</a></li>
 										</ul>
 									</li>
@@ -157,14 +153,14 @@
 
 										<?php foreach ($post->result() as $row)
 										{ ?>
-											<?php $counter=0; 
+											<?php $counter=0;
 											foreach($friend_post->result() as $column)
 											{
 												if(($column->id_user != $row->id_user) && ($column->id_friend != $row->id_user))
 													continue;
 												else
 													$counter++;
-											} 
+											}
 											if($counter>0 || ($row->id_user == $user_id) )
 											{ ?>
 												<?php if ($row->type == 'urgent'): ?>
@@ -332,7 +328,7 @@
 						data: {},
 						success: function(){ location.reload(); },
 					});
-				} 
+				}
 				else if(type == 'delete')
 				{
 					$.ajax({

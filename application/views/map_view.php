@@ -71,17 +71,13 @@
 													<li><a href=""> <?php echo $notification->id ?> </a></li>
 													<button id="button_<?php echo $notification->id; ?>"> Confirm </button>
 													<button id="delete_<?php echo $notification->id; ?>"> Delete </button>
-												<?php } 
+												<?php }
 											} ?>
 										</ul>
 									</li>
 									<li class="dropdown">
 										<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="glyphicon glyphicon-user"></i></a>
 										<ul class="dropdown-menu">
-											<li><a href="">More</a></li>
-											<li><a href="">More</a></li>
-											<li><a href="">More</a></li>
-											<li><a href="">More</a></li>
 											<li><a href="<?php echo site_url('home_control/logout') ?>">Log out</a></li>
 										</ul>
 									</li>
@@ -262,7 +258,7 @@
 						data: {},
 						success: function(){ location.reload(); },
 					});
-				} 
+				}
 				else if(type == 'delete')
 				{
 					$.ajax({

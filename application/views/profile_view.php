@@ -73,17 +73,13 @@
 												<li><a href=""> <?php echo $notification->id ?> </a></li>
 												<button id="button_<?php echo $notification->id; ?>"> Confirm </button>
 												<button id="delete_<?php echo $notification->id; ?>"> Delete </button>
-											<?php } 
+											<?php }
 										} ?>
 									</ul>
 								</li>
 								<li class="dropdown">
 									<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="glyphicon glyphicon-user"></i></a>
 									<ul class="dropdown-menu">
-										<li><a href="">More</a></li>
-										<li><a href="">More</a></li>
-										<li><a href="">More</a></li>
-										<li><a href="">More</a></li>
 										<li><a href="<?php echo site_url('home_control/logout') ?>">Log out</a></li>
 									</ul>
 								</li>
@@ -132,7 +128,7 @@
 
 																<input id = "browse_submit" type="submit" value="upload" style="text-align: center; position: absolute;left:42%;margin-top:30px;">
 															</form>
-														</div>													
+														</div>
 													</div>
 												</div>
 												<div class="col-md-offset-1 col-md-7">
@@ -193,7 +189,7 @@
 										<div class="well">
 											<h4>What's Happened</h4>
 											<br/>
-										
+
 										<?php foreach ($post->result() as $row)
 										{ ?>
 											<?php if ($row->type == 'urgent'): ?>
@@ -362,7 +358,7 @@
 								data: {},
 								success: function(){ location.reload(); },
 							});
-						} 
+						}
 						else if(type == 'delete')
 						{
 							$.ajax

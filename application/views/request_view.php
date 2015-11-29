@@ -3,12 +3,12 @@
 		<title> HelpMe - Request </title>
 		<link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">
 		<link href="<?php echo base_url();?>asset/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
-		
+
 		<link href="<?php echo base_url();?>asset/login/css/my_styles.css" rel="stylesheet" type="text/css"/>
 		<meta http-equiv="content-type" content="text/html; charset=UTF-8">
 		<meta name="generator" content="Bootply" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-		
+
 		<!--[if lt IE 9]>
 			<script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
 		<![endif]-->
@@ -17,7 +17,7 @@
 	<style>
 
 	body{
-		background:#eee;    
+		background:#eee;
 	}
 	.main-box.no-header {
 		padding-top: 20px;
@@ -134,17 +134,13 @@
 										<li><a href=""> <?php echo $notification->id ?> </a></li>
 										<button id="button_<?php echo $notification->id; ?>"> Confirm </button>
 										<button id="delete_<?php echo $notification->id; ?>"> Delete </button>
-									<?php } 
+									<?php }
 								} ?>
 							</ul>
 						</li>
 						<li class="dropdown">
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="glyphicon glyphicon-user"></i></a>
 							<ul class="dropdown-menu">
-								<li><a href="">More</a></li>
-								<li><a href="">More</a></li>
-								<li><a href="">More</a></li>
-								<li><a href="">More</a></li>
 								<li><a href="<?php echo site_url('home_control/logout') ?>">Log out</a></li>
 							</ul>
 						</li>
@@ -186,7 +182,7 @@
 												<?php else: ?>
 													<span class="label label-success" style="margin-left:1cm">Easy</span>
 												<?php endif; ?>
-												
+
 												<?php if ($row->request_stat == 'taken'): ?>
 													<span class="label label-warning" style="margin-left:1cm"><?php echo $row->request_stat; ?></span>
 												<?php elseif ($row->request_stat == 'accomplished'): ?>
@@ -240,7 +236,7 @@
 						data: {},
 						success: function(){ location.reload(); },
 					});
-				} 
+				}
 				else if(type == 'delete')
 				{
 					$.ajax({
