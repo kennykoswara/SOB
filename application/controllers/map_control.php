@@ -46,7 +46,10 @@ class map_control extends CI_Controller {
 	{
 		$session_data = $this->session->userdata('logged_in');
 		$id = $session_data['id'];
-		$datetime = date('Y-m-d h:i:s', now());
-		$this->map_model->add_book($id_mission, $id_requestor, $id, $datetime);
+		if(empty($this->map_model->mission_check($id, $id_mission, $id_requestor)))
+		{
+			$datetime = date('Y-m-d h:i:s', now());
+			$this->map_model->add_book($id_mission, $id_requestor, $id, $datetime);
+		}
 	}
 }

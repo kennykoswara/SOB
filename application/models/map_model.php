@@ -49,4 +49,15 @@ class map_model extends CI_Model {
 		$this->db->insert('mission',$data);
 		return true;
 	}
+	function mission_check($id, $id_mission, $id_requestor)
+	{
+		$this -> db -> select('id');
+		$this -> db -> from('mission');
+		$this -> db -> where('id_acceptor',$id);
+		$this -> db -> where('id_marker',$id_mission);
+		$this -> db -> where('id_requestor',$id_requestor);
+		$query = $this->db->get();  
+		$ret = $query->row();
+		return $ret;
+	}
 }
