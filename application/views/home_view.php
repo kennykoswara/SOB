@@ -132,7 +132,7 @@
 											<?php $counter=0;
 											foreach($friend_post->result() as $column)
 											{
-												if(($column->id_user != $row->id_user) && ($column->id_friend != $row->id_user))
+												if(($column->id_user != $row->id_user || $column->id_friend != $row->id_user) && ($column->approval=="pending" && $column->status=="F"))
 													continue;
 												else
 													$counter++;
@@ -140,22 +140,22 @@
 											if($counter>0 || ($row->id_user == $user_id) )
 											{ ?>
 												<?php if ($row->type == 'urgent'): ?>
-													 <div class="panel panel-danger" onclick="location.href='<?php echo base_url('index.php/home_control/load_map?var1='. $row->lat . '&var2=' . $row->lng)?>';" style="cursor: pointer;">
+													 <div class="panel panel-danger" >
 												<?php elseif ($row->type == 'medium'): ?>
-													 <div class="panel panel-warning" onclick="location.href='<?php echo base_url('index.php/home_control/load_map?var1='. $row->lat . '&var2=' . $row->lng)?>';" style="cursor: pointer;">
+													 <div class="panel panel-warning" >
 												<?php else: ?>
-													 <div class="panel panel-success" onclick="location.href='<?php echo base_url('index.php/home_control/load_map?var1='. $row->lat . '&var2=' . $row->lng)?>';" style="cursor: pointer;">
+													 <div class="panel panel-success">
 												<?php endif; ?>
-													<div class="panel-heading">
+													<div class="panel-heading" onclick="location.href='<?php echo base_url('index.php/home_control/load_map?var1='. $row->lat . '&var2=' . $row->lng)?>';" style="cursor: pointer;">
 														<!--<a href="#" class="pull-right">View all</a>-->
 														<h3> <?php echo $row->request; ?> </h3>
 															<!--<h4>Bootply Editor &amp; Code Library</h4>-->
-													</div>
+													</div >
 													<div class="panel-body">
 														<p>
 															<img src=" <?php echo base_url(); echo $row->picture ?>" class="img-circle pull-left">
 															<div>
-																<a href="#" style="padding-left:1cm;"> <b> <?php echo $row->name ?> </b></a>
+																<a href="<?php echo site_url('friend_control/index/'.$row->id_user) ?>" style="padding-left:1cm;"> <b> <?php echo $row->name ?> </b></a>
 																</br>
 																<font color="grey" size=2 style="padding-left:1cm;"> <?php echo $row->post_time ?> </font>
 																<div>
