@@ -15,7 +15,7 @@
 	</head>
 	<style>
 #map-canvas {
-  display: block;
+  width: 660px;
   height: 400px;
 }
 </style>
@@ -154,7 +154,7 @@
 
 										<div class="well">
 										   My Current location.
-										   <div id="map-canvas" class="span12"></div>
+										   <div id="map-canvas"></div>
 												Location:
 												</br> Latitude:&nbsp;&nbsp;&nbsp;
 												<input id="my_lat" name="my_lat" readonly="readonly">

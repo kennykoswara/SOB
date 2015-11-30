@@ -82,9 +82,10 @@
 			</div>
 		</div>
 
+	<script src="<?php echo base_url();?>asset/js/jquery-2.1.4.min.js" type="text/javascript"></script>
 	<script src="<?php echo base_url();?>asset/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
 	<script src="<?php echo base_url();?>asset/login/js/my_js.js" type="text/javascript"></script>
-	<script src="<?php echo base_url();?>asset/js/jquery-2.1.4.min.js" type="text/javascript"></script>
+
 	<script>
 		function isPasswordMatch() {
 			var password = $("#passWord").val();
