@@ -108,14 +108,12 @@
 									<!-- main col left -->
 									<div class="col-sm-5">
 
-										<div class="panel panel-default">
-											<div class="panel-thumbnail"><img src="/assets/example/bg_5.jpg" class="img-responsive"></div>
+										<div class="panel panel-success">
+											<div class="panel-heading">
+												Map
+											</div>
 											<div class="panel-body">
-												<p class="lead">Urbanization</p>
-												<p>45 Followers, 13 Posts</p>
-												<p>
-													<img src="https://lh3.googleusercontent.com/uFp_tsTJboUY7kue5XAsGA=s28" width="28px" height="28px">
-												</p>
+												Map disini
 											</div>
 										</div>
 

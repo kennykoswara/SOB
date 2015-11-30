@@ -174,6 +174,48 @@
 										</div>
 									</div>
 
+									<div class="panel panel-success">
+										<div class="panel-heading">
+											Map
+										</div>
+										<div class="panel-body">
+											Map disini
+										</div>
+									</div>
+
+								<div class="panel panel-default">
+
+									<div class="panel-heading">
+										<a href="#" class="pull-right">See All</a>
+										Friends
+									</div>
+									<div class="panel-body">
+										<div class="row">
+											<div class="col-md-4">
+												A
+											</div>
+											<div class="col-md-4">
+												B
+											</div>
+											<div class="col-md-4">
+												C
+											</div>
+										</div>
+										<div class="row">
+											<div class="col-md-4">
+												D
+											</div>
+											<div class="col-md-4">
+												E
+											</div>
+											<div class="col-md-4">
+												F
+											</div>
+										</div>
+									</div>
+								</div>
+
+
 								</div>
 
 								<!-- main col right -->
