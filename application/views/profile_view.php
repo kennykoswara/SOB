@@ -17,6 +17,55 @@
 #map-canvas {
 	height: 400px;
 }
+
+
+.caption {
+   position: relative;
+    display: inline-block; /* added */
+    overflow: hidden; /* added */
+}
+
+.caption__overlay {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    padding: 10px;
+    color: white;
+    transform: translateY(100%);
+    transition: transform .35s ease-out;
+}
+.caption:hover .caption__overlay {
+    transform: translateY(0);
+}
+
+
+.caption__overlay__title {
+    margin: 0;
+    padding: 0 0 12px;
+    /*transform: translateY( calc(-100% - 10px) );  +10px overlay padding */
+    transition: transform .35s ease-out;
+	text-align:center;
+}
+.caption:hover .caption__overlay__title {
+    transform: translateY(0);
+}
+
+
+.caption::before {
+    content: ' ';
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: transparent;
+    transition: background .35s ease-out;
+}
+.caption:hover::before {
+    background: rgba(0, 0, 0, .5);
+}
 </style>
 <body>
 	<div class="wrapper">
@@ -191,7 +240,7 @@
 								<div class="panel panel-default">
 
 									<div class="panel-heading">
-										<a href="#" class="pull-right">See All</a>
+										<a href="<?php echo site_url('requesting_control/index') ?>" class="pull-right">See All</a>
 										Requesting Friend
 									</div>
 									<div class="panel panel-default">
@@ -210,7 +259,14 @@
 											if($row->id_friend == $my_id)
 											{ ?>
 												<div class="col-md-4">
-													<img src="<?php echo base_url(); echo $row->picture ?>" class="thumb" style="max-width:100px;max-height:100px;width:auto;height:auto;">
+													<a href="<?php echo site_url('friend_control/index/'.$row->id_user) ?>">
+														<article class="caption">
+															<img src="<?php echo base_url(); echo $row->picture ?>" class="caption__media img-responsive" style="max-width:100px;max-height:100px;width:auto;height:auto;">
+																<div class="caption__overlay">
+																<h5 class="caption__overlay__title"> <?php echo "<b>".$row->name."</b>" ?> </h5>
+															</div>
+														</article>
+													</a>
 												</div>
 											<?php } 
 											else if ($count_friend_list%3 != 0)
@@ -232,7 +288,7 @@
 								<div class="panel panel-default">
 
 									<div class="panel-heading">
-										<a href="#" class="pull-right">See All</a>
+										<a href="<?php echo site_url('requested_control/index') ?>" class="pull-right">See All</a>
 										Requested Friend
 									</div>
 									<div class="panel panel-default">
@@ -251,7 +307,14 @@
 											if($row->id_user == $my_id)
 											{ ?>
 												<div class="col-md-4">
-													<img src="<?php echo base_url(); echo $row->picture ?>" class="thumb" style="max-width:100px;max-height:100px;width:auto;height:auto;">
+													<a href="<?php echo site_url('friend_control/index/'.$row->id_friend) ?>">
+														<article class="caption">
+															<img src="<?php echo base_url(); echo $row->picture ?>" class="caption__media img-responsive" style="max-width:100px;max-height:100px;width:auto;height:auto;">
+																<div class="caption__overlay">
+																<h5 class="caption__overlay__title"> <?php echo "<b>".$row->name."</b>" ?> </h5>
+															</div>
+														</article>
+													</a>
 												</div>
 											<?php } 
 											else if ($count_friend_list%3 != 0)

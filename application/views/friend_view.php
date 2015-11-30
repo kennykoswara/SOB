@@ -203,7 +203,7 @@
 															<div class="col-sm-7">
 
 																<div class="well">
-																	<h4>Sign-up</h4>
+																	<h4>Help Request</h4>
 																	</br>
 																<?php foreach ($post->result() as $row)
 																{ ?>
