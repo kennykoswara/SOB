@@ -198,7 +198,6 @@
 
 
 									<div class="panel-body">
-<<<<<<< HEAD
 										<?php $count_friend_list=1; 
 										foreach ($friend_list->result() as $row)
 										{ 
@@ -227,14 +226,10 @@
 										} ?>			
 									</div>
 								</div>
-								</div>
+								</div>	
+
 								
 								<div class="panel panel-default">
-=======
-										<?php $count_friend_list=0;
-										foreach ($friend_list->result() as $row)
-										{
->>>>>>> origin/master
 
 									<div class="panel-heading">
 										<a href="#" class="pull-right">See All</a>
@@ -242,18 +237,14 @@
 									</div>
 									<div class="panel panel-default">
 
-									
+
 									<div class="panel-body">
 										<?php $count_friend_list=1; 
 										foreach ($friend_list2->result() as $row)
 										{ 
 											if($count_friend_list== 9)
 												break;
-<<<<<<< HEAD
 											if($count_friend_list%3 == 0) 
-=======
-											if($count_friend_list%4 == 0)
->>>>>>> origin/master
 											{ ?>
 												<div class="row">
 											<?php }
@@ -262,33 +253,23 @@
 												<div class="col-md-4">
 													<img src="<?php echo base_url(); echo $row->picture ?>" class="thumb" style="max-width:100px;max-height:100px;width:auto;height:auto;">
 												</div>
-<<<<<<< HEAD
 											<?php } 
 											else if ($count_friend_list%3 != 0)
 											{ 
 												continue;
 											} ?>
 											<?php if($count_friend_list%3 == 0) 
-=======
-											<?php }
-											else if ($count_friend_list%4 != 0 && $row->id == $my_id)
-											{
-												continue;
-											} ?>
-											<?php if($count_friend_list%4 == 0)
->>>>>>> origin/master
 											{ ?>
 												</div>
 												</br>
 											<?php }
-											$count_friend_list++;
-										} ?>
+											$count_friend_list++; 
+										} ?>			
 									</div>
 								</div>
-								</div>
+								</div>	
+							</div>
 
-
-								</div>
 
 								<!-- main col right -->
 								<div class="col-sm-7">
