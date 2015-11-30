@@ -29,7 +29,7 @@ class login_control extends CI_Controller {
 			redirect('home_control', 'refresh');
 		}
 	}
-	
+
 	function check_database($password)
 	{
 		$useremail = $this->input->post('useremail');
@@ -54,7 +54,7 @@ class login_control extends CI_Controller {
 			return false;
 		}
 	}
-	
+
 	public function submit()
 	{
 		$formSubmit = $this->input->post('submitForm');
@@ -79,19 +79,19 @@ class login_control extends CI_Controller {
 					$mail->SMTPDebug = false;
 					$mail->Debugoutput = 'html';
 					$mail->SMTPAuth   = true;
-					$mail->Port       = 587; 
+					$mail->Port       = 587;
 					$mail->SMTPSecure = "tls";
-					$mail->Host       = "smtp.gmail.com";            
-					$mail->Username   = "nate.river134@gmail.com"; 
+					$mail->Host       = "smtp.gmail.com";
+					$mail->Username   = "nate.river134@gmail.com";
 					$mail->Password   = "Gabung123";
 					$mail->SetFrom('nate.river134@gmail.com', 'Admin');  //Who is sending the email
 					$mail->AddReplyTo("nate.river134@gmail.com","Nate River");  //email address that receives the response
 					$mail->Subject    = "Thank you for Your Registration";
-					
+
 					$mail->Body      = " <h1>Your account has been created.</h1>
 					Thank you for registering with helpMe. Your account has been created, and a verification email has been sent
 					to your registered email address. Please click on the verification link included in the email to activate your account.";
-					
+
 					//$mail->AltBody    = "Your Request has been sent with the following information: \nResident id:";
 					$destino = "$email"; // Who is addressed the email to
 					$mail->AddAddress($destino, "$name");
@@ -101,14 +101,17 @@ class login_control extends CI_Controller {
 					} else {
 						$data["message"] = "Message sent correctly!";
 					}
-					echo "INI NANTI HOME";
-				}		
+					echo '<script language="javascript">';
+					echo 'alert("Account created successfully!")';
+					echo '</script>';
+					redirect('login_control', 'refresh');
+				}
 			}
 		}
 		/*else
 			redirect($this->config->item('backend_folder').'/categories');*/
 	}
-		
+
 	function email_check($email)
 	{
 		$result = $this->login_model->check_email($email);

@@ -13,6 +13,11 @@
 	<![endif]-->
 	<link href="<?php echo base_url();?>asset/home/css/styles.css" rel="stylesheet" type="text/css"/>
 </head>
+<style>
+#map-canvas {
+	height: 400px;
+}
+</style>
 <body>
 	<div class="wrapper">
 		<div class="box">
@@ -179,7 +184,7 @@
 											Map
 										</div>
 										<div class="panel-body">
-											Map disini
+										<div id="map-canvas" class="span12"></div>
 										</div>
 									</div>
 
@@ -191,8 +196,9 @@
 									</div>
 									<div class="panel panel-default">
 
-									
+
 									<div class="panel-body">
+<<<<<<< HEAD
 										<?php $count_friend_list=1; 
 										foreach ($friend_list->result() as $row)
 										{ 
@@ -224,6 +230,11 @@
 								</div>
 								
 								<div class="panel panel-default">
+=======
+										<?php $count_friend_list=0;
+										foreach ($friend_list->result() as $row)
+										{
+>>>>>>> origin/master
 
 									<div class="panel-heading">
 										<a href="#" class="pull-right">See All</a>
@@ -238,7 +249,11 @@
 										{ 
 											if($count_friend_list== 9)
 												break;
+<<<<<<< HEAD
 											if($count_friend_list%3 == 0) 
+=======
+											if($count_friend_list%4 == 0)
+>>>>>>> origin/master
 											{ ?>
 												<div class="row">
 											<?php }
@@ -247,18 +262,27 @@
 												<div class="col-md-4">
 													<img src="<?php echo base_url(); echo $row->picture ?>" class="thumb" style="max-width:100px;max-height:100px;width:auto;height:auto;">
 												</div>
+<<<<<<< HEAD
 											<?php } 
 											else if ($count_friend_list%3 != 0)
 											{ 
 												continue;
 											} ?>
 											<?php if($count_friend_list%3 == 0) 
+=======
+											<?php }
+											else if ($count_friend_list%4 != 0 && $row->id == $my_id)
+											{
+												continue;
+											} ?>
+											<?php if($count_friend_list%4 == 0)
+>>>>>>> origin/master
 											{ ?>
 												</div>
 												</br>
 											<?php }
-											$count_friend_list++; 
-										} ?>			
+											$count_friend_list++;
+										} ?>
 									</div>
 								</div>
 								</div>
@@ -319,6 +343,56 @@
 							</div><!-- /padding -->
 						</div>
 						<!-- /main -->
+
+						<section id="wrapper">
+							<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=true"></script>
+							<p id="demo"></p>
+							<script>
+								function initialize()
+								{
+									var map;
+									var position = new google.maps.LatLng(-6.2559323, 106.61493070000006);    // set your own default location.
+									var myOptions = {
+										zoom: 15,
+										center: position
+									};
+									var map = new google.maps.Map(document.getElementById("map-canvas"), myOptions);
+
+									// We send a request to search for the location of the user.
+									// If that location is found, we will zoom/pan to this place, and set a marker
+									navigator.geolocation.getCurrentPosition(locationFound, locationNotFound);
+
+									function locationFound(position)
+									{
+										// we will zoom/pan to this place, and set a marker
+										var location = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+										// var accuracy = position.coords.accuracy;
+										map.setCenter(location);
+										var marker = new google.maps.Marker({
+											position: location,
+											map: map,
+											title: "My Location"
+										});
+										// set the value an value of the <input>
+										updateInput(location.lat(), location.lng());
+
+										// Add a "drag end" event handler
+										google.maps.event.addListener(marker, 'dragend', function() {
+										  updateInput(this.position.lat(), this.position.lng());
+										});
+									}
+									function locationNotFound() {
+										// location not found, you might want to do something here
+									}
+
+								}
+								function updateInput(lat, lng) {
+								  document.getElementById("my_lat").value = lat;
+								  document.getElementById("my_long").value = lng;
+								}
+								google.maps.event.addDomListener(window, 'load', initialize);
+							</script>
+						</section>
 
 					</div>
 				</div>
