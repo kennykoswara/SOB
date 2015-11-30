@@ -7,8 +7,9 @@ var preloads=[];
 /* add any number of images here */
 
 preload(
-'asset/login/image/1.jpg',
-'asset/login/image/2.png'
+'http://synchbattler.esy.es/asset/login/image/1.jpg',
+'http://synchbattler.esy.es/asset/login/image/2.jpg',
+'http://synchbattler.esy.es/asset/login/image/3.jpg'
 );
 
 function preload(){

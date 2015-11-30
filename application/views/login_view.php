@@ -7,8 +7,14 @@
 	</head>
 	<body>
 		<div class="container-fluid">
+				<div class="col-md-offset-2 col-xs-offset-2 col-lg-offset-2 col-sm-offset-2 col-md-2 col-xs-2 col-sm-2 col-lg-2">
+					<div class="row">
+						<h2>HelpMe</h2>
+					</div>
+				</div>
+
 			<?php
-			$attributes = array('class' => 'form-inline col-xs-offset-7','style'=>'margin-top: 1.5em');
+			$attributes = array('class' => 'form-inline col-sm-offset-3 col-xs-offset-3 col-md-offset-3 col-lg-offset-3 col-md-5 col-lg-5 col-xs-5 col-sm-5','style'=>'margin-top: 1.5em');
 			echo form_open('login_control',$attributes); ?>
 				<div class="row">
 					<div class="form-group">
@@ -34,7 +40,7 @@
 					<h3>Sharing is Caring</h3>
 				</div>
 			</div>
-			<div class="col-md-offset-1 col-md-4">
+			<div class="col-md-offset-1 col-md-5">
 				<div class="row">
 					<h4><b>Want to help others?</b> Join us today!</h4>
 				</div>

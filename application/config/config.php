@@ -17,6 +17,7 @@
 |
 */
 $config['base_url'] = 'http://localhost/SOB/';
+
 //$config['base_url'] = 'http://synchbattler.esy.es';
 
 /*
