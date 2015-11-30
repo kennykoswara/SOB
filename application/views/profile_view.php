@@ -187,33 +187,72 @@
 
 									<div class="panel-heading">
 										<a href="#" class="pull-right">See All</a>
-										Friends
+										Requesting Friend
 									</div>
 									<div class="panel panel-default">
 
 									
 									<div class="panel-body">
-										<?php $count_friend_list=0; 
+										<?php $count_friend_list=1; 
 										foreach ($friend_list->result() as $row)
 										{ 
-
 											if($count_friend_list== 9)
 												break;
-											if($count_friend_list%4 == 0) 
+											if($count_friend_list%3 == 0) 
 											{ ?>
 												<div class="row">
 											<?php }
-											else if($count_friend_list%4 != 0 && $row->id != $my_id)
+											if($row->id_friend == $my_id)
 											{ ?>
 												<div class="col-md-4">
 													<img src="<?php echo base_url(); echo $row->picture ?>" class="thumb" style="max-width:100px;max-height:100px;width:auto;height:auto;">
 												</div>
 											<?php } 
-											else if ($count_friend_list%4 != 0 && $row->id == $my_id)
+											else if ($count_friend_list%3 != 0)
 											{ 
 												continue;
 											} ?>
-											<?php if($count_friend_list%4 == 0) 
+											<?php if($count_friend_list%3 == 0) 
+											{ ?>
+												</div>
+												</br>
+											<?php }
+											$count_friend_list++; 
+										} ?>			
+									</div>
+								</div>
+								</div>
+								
+								<div class="panel panel-default">
+
+									<div class="panel-heading">
+										<a href="#" class="pull-right">See All</a>
+										Requested Friend
+									</div>
+									<div class="panel panel-default">
+
+									
+									<div class="panel-body">
+										<?php $count_friend_list=1; 
+										foreach ($friend_list2->result() as $row)
+										{ 
+											if($count_friend_list== 9)
+												break;
+											if($count_friend_list%3 == 0) 
+											{ ?>
+												<div class="row">
+											<?php }
+											if($row->id_user == $my_id)
+											{ ?>
+												<div class="col-md-4">
+													<img src="<?php echo base_url(); echo $row->picture ?>" class="thumb" style="max-width:100px;max-height:100px;width:auto;height:auto;">
+												</div>
+											<?php } 
+											else if ($count_friend_list%3 != 0)
+											{ 
+												continue;
+											} ?>
+											<?php if($count_friend_list%3 == 0) 
 											{ ?>
 												</div>
 												</br>
