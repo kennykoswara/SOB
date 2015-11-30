@@ -13,6 +13,13 @@
 		<link href="<?php echo base_url();?>asset/home/css/styles.css" rel="stylesheet" type="text/css"/>
 
 	</head>
+<style>
+#mapcontainer {
+   display: block;
+   height: 600px;
+}
+</style>
+
 	<body>
 		<div class="wrapper">
 			<div class="box">
@@ -130,15 +137,13 @@
 
 		<section id="wrapper">
 			<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=true"></script>
-			<p id="demo"></p>
+			<p id="demo" class="span12"></p>
 			<script>
 			function success(position)
 			{
 				var mapcanvas = document.createElement('div');
 				var x = document.getElementById("demo");
 				mapcanvas.id = 'mapcontainer';
-				mapcanvas.style.height = '600px';
-				mapcanvas.style.width = '1190px';
 				document.querySelector('article').appendChild(mapcanvas);
 				<?php
 					if($locate_lng === NULL) {?>
@@ -147,8 +152,6 @@
 						var coords = new google.maps.LatLng(<?php echo $locate_lat ?> , <?php echo $locate_lng ?>);
 					<?php } ?>
 
-
-				x.innerHTML = "Latitude: " + position.coords.latitude + "<br>Longitude: " + position.coords.longitude;
 				var options = {
 					zoom: 15,
 					center: coords,
@@ -189,9 +192,9 @@
 							type: "POST",
 							url: "<?php echo site_url('map_control/book_mission/"+id+"/"+id_requestor+"'); ?>",
 							data: {},
-							
+
 							success: function(msg)
-							{ 
+							{
 								if(msg=="can accept")
 								{
 									alert('Your mission has been updated');
@@ -199,7 +202,7 @@
 								}
 								else if(msg=="cannot accept")
 									alert('You have already taken this request');
-								else 
+								else
 									alert("You can't accept this request yourself");
 							},
 						});
