@@ -40,7 +40,7 @@
 					<h3>Sharing is Caring</h3>
 				</div>
 			</div>
-			<div class="col-md-offset-1 col-md-5">
+			<div class="col-md-offset-1 col-md-4">
 				<div class="row">
 					<h4><b>Want to help others?</b> Join us today!</h4>
 				</div>
@@ -74,7 +74,10 @@
 						</div>
 					</div>
 					<div id="divCheckPassword"></div>
-					<button type="submit" name="submitForm" value="signup" id="signup" class="btn btn-default btn-lg btn-info" style="margin-left:79%"><b>Sign Up</b></button>
+					<div class="row">
+						<button type="submit" name="submitForm" value="signup" id="signup" class="btn btn-default btn-lg btn-info"><b>Sign Up</b></button>
+					</div>
+
 				</form>
 			</div>
 		</div>
