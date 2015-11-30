@@ -20,6 +20,8 @@ class profile_control extends CI_Controller {
 			$data['post']=$this->profile_model->post_select($id);
 			$data['user']=$this->profile_model->user_select($id);
 			$data['request_list']=$this->profile_model->request_list($id);
+			$data['friend_list']=$this->profile_model->friend_list($id);
+			$data['my_id'] = $id;
 			$this->load->view('profile_view', $data);
 		}
 		else

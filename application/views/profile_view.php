@@ -189,30 +189,39 @@
 										<a href="#" class="pull-right">See All</a>
 										Friends
 									</div>
+									<div class="panel panel-default">
+
+									
 									<div class="panel-body">
-										<div class="row">
-											<div class="col-md-4">
-												A
-											</div>
-											<div class="col-md-4">
-												B
-											</div>
-											<div class="col-md-4">
-												C
-											</div>
-										</div>
-										<div class="row">
-											<div class="col-md-4">
-												D
-											</div>
-											<div class="col-md-4">
-												E
-											</div>
-											<div class="col-md-4">
-												F
-											</div>
-										</div>
+										<?php $count_friend_list=0; 
+										foreach ($friend_list->result() as $row)
+										{ 
+
+											if($count_friend_list== 9)
+												break;
+											if($count_friend_list%4 == 0) 
+											{ ?>
+												<div class="row">
+											<?php }
+											else if($count_friend_list%4 != 0 && $row->id != $my_id)
+											{ ?>
+												<div class="col-md-4">
+													<img src="<?php echo base_url(); echo $row->picture ?>" class="thumb" style="max-width:100px;max-height:100px;width:auto;height:auto;">
+												</div>
+											<?php } 
+											else if ($count_friend_list%4 != 0 && $row->id == $my_id)
+											{ 
+												continue;
+											} ?>
+											<?php if($count_friend_list%4 == 0) 
+											{ ?>
+												</div>
+												</br>
+											<?php }
+											$count_friend_list++; 
+										} ?>			
 									</div>
+								</div>
 								</div>
 
 

@@ -34,10 +34,20 @@
 		}
 		public function request_list($id_user)
 		{
-			$this -> db -> select('user_info.id, user_info.username, friends.request, friends.approval, friends.status');
+			$this -> db -> select('user_info.id, user_info.username, user_info.picture, friends.request, friends.approval, friends.status');
 			$this -> db -> from('user_info');
 			$this->db->join('friends', 'user_info.id = friends.id_user');
 			$this -> db -> where('friends.id_friend',$id_user);
+			$query = $this->db->get();
+			return $query;
+		}
+		public function friend_list($id_user)
+		{
+			$this -> db -> select('user_info.id, user_info.username, user_info.picture, friends.request, friends.approval, friends.status');
+			$this -> db -> from('user_info');
+			$this->db->join('friends', 'user_info.id = friends.id_user');
+			$this -> db -> where('friends.id_friend',$id_user);
+			$this -> db -> or_where('friends.id_user',$id_user);
 			$query = $this->db->get();
 			return $query;
 		}
