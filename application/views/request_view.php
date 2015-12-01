@@ -1,9 +1,9 @@
 <html>
 	<head>
 		<title> HelpMe - Request </title>
+		<link rel="shortcut icon" type="image/png" href=" <?php echo base_url();?>asset/favicon.jpg"/>
 		<link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">
 		<link href="<?php echo base_url();?>asset/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
-
 		<link href="<?php echo base_url();?>asset/login/css/my_styles.css" rel="stylesheet" type="text/css"/>
 		<meta http-equiv="content-type" content="text/html; charset=UTF-8">
 		<meta name="generator" content="Bootply" />

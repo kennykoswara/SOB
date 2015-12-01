@@ -4,6 +4,7 @@
 		{ ?>
 			<title> HelpMe - <?php echo $row->name ?> Requesting Friend </title>
 		<?php } ?>
+		<link rel="shortcut icon" type="image/png" href=" <?php echo base_url();?>asset/favicon.jpg"/>
 		<link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">
 		<link href="<?php echo base_url();?>asset/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
 
