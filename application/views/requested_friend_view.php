@@ -4,6 +4,7 @@
 		{ ?>
 			<title> HelpMe - <?php echo $row->name ?> Requested Friend </title>
 		<?php } ?>
+		<link rel="shortcut icon" type="image/png" href=" <?php echo base_url();?>asset/favicon.jpg"/>
 		<link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">
 		<link href="<?php echo base_url();?>asset/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
 
@@ -96,7 +97,7 @@
 						<span class="icon-bar"></span>
 						<span class="icon-bar"></span>
 					</button>
-					<a href="" class="navbar-brand logo">H</a>
+					<a href="<?php echo site_url('home_control/index/') ?>" class="navbar-brand logo"><img src=" <?php echo base_url();?>asset/helpme.jpg" style="max-width:20px;max-height:20px;width:auto;height:auto;"></a>
 				</div>
 				<nav class="collapse navbar-collapse" role="navigation">
 					<form class="navbar-form navbar-left" action="<?=site_url('home_control/search')?>" method="get">
