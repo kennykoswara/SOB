@@ -39,6 +39,9 @@
 				<div class="row">
 					<h3>Sharing is Caring</h3>
 				</div>
+				<div class="row col-md-offset-2 col-xs-offset-2 col-sm-offset-2 col-lg-offset-2">
+					<img src="<?php echo base_url();?>asset/media/helpme.png" style="max-width:7cm; max-height:7cm;">
+				</div>
 			</div>
 			<div class="col-md-offset-1 col-md-4">
 				<div class="row">
