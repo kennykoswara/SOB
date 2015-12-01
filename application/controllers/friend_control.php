@@ -22,6 +22,8 @@ class friend_control extends CI_Controller {
 			$data['request']=$this->friend_model->check_friend($id_user, $id);
 			$data['friend_request']=$this->friend_model->check_friend_request($id_user, $id);
 			$data['request_list']=$this->friend_model->request_list($id_user);
+			$data['friend_list2']=$this->friend_model->friend_list2($id);
+			$data['friend_list']=$this->friend_model->friend_list($id);
 			$data['id'] = $id;
 			$this->load->view('friend_view', $data);
 		}
