@@ -257,7 +257,7 @@
 											{ ?>
 												<div class="row">
 											<?php }
-											if($row->id_friend == $my_id)
+											if($row->id_friend == $my_id && $row->approval=='approved' && $row->status=='T')
 											{ ?>
 												<div class="col-md-4">
 													<a href="<?php echo site_url('friend_control/index/'.$row->id_user) ?>">
@@ -305,7 +305,7 @@
 											{ ?>
 												<div class="row">
 											<?php }
-											if($row->id_user == $my_id)
+											if($row->id_user == $my_id && $row->approval=='approved' && $row->status=='T')
 											{ ?>
 												<div class="col-md-4">
 													<a href="<?php echo site_url('friend_control/index/'.$row->id_friend) ?>">

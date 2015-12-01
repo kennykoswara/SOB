@@ -11,6 +11,8 @@
 			$this -> db -> from('user_info');
 			$this->db->join('friends', 'user_info.id = friends.id_friend');
 			$this -> db -> where('friends.id_user',$id_user);
+			$this -> db -> where('friends.approval','approved');
+			$this -> db -> where('friends.status','T');
 			$query = $this->db->get();
 			return $query;
 		}
