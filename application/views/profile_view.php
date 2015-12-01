@@ -8,6 +8,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 	<link href="<?php echo base_url();?>asset/css/learn_style.css" rel="stylesheet" type="text/css" />
 	<link href="<?php echo base_url();?>asset/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+
 	<!--[if lt IE 9]>
 	<script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
 	<![endif]-->
@@ -165,9 +166,9 @@
 									<?php foreach ($user->result() as $column)
 									{ ?>
 										<div class="col-sm-5">
-											<div class="panel panel-info">
+											<div class="panel panel-primary">
 												<div class="panel-heading">
-													<?php echo $column->name; ?>
+													<span style="font-size:2em"><b><?php echo $column->name; ?></b></span>
 												</div>
 												<div class="panel-body">
 													<div class="col-md-4">
@@ -228,16 +229,16 @@
 										</div>
 									</div>
 
-									<div class="panel panel-success">
+									<div class="panel panel-primary">
 										<div class="panel-heading">
-											Map
+											Current Location
 										</div>
 										<div class="panel-body">
 										<div id="map-canvas" class="span12"></div>
 										</div>
 									</div>
 
-								<div class="panel panel-default">
+								<div class="panel panel-primary">
 
 									<div class="panel-heading">
 										<a href="<?php echo site_url('requesting_control/index') ?>" class="pull-right">See All</a>
@@ -247,12 +248,12 @@
 
 
 									<div class="panel-body">
-										<?php $count_friend_list=1; 
+										<?php $count_friend_list=1;
 										foreach ($friend_list->result() as $row)
-										{ 
+										{
 											if($count_friend_list== 9)
 												break;
-											if($count_friend_list%3 == 0) 
+											if($count_friend_list%3 == 0)
 											{ ?>
 												<div class="row">
 											<?php }
@@ -268,24 +269,24 @@
 														</article>
 													</a>
 												</div>
-											<?php } 
+											<?php }
 											else if ($count_friend_list%3 != 0)
-											{ 
+											{
 												continue;
 											} ?>
-											<?php if($count_friend_list%3 == 0) 
+											<?php if($count_friend_list%3 == 0)
 											{ ?>
 												</div>
 												</br>
 											<?php }
-											$count_friend_list++; 
-										} ?>			
+											$count_friend_list++;
+										} ?>
 									</div>
 								</div>
-								</div>	
+								</div>
 
-								
-								<div class="panel panel-default">
+
+								<div class="panel panel-primary">
 
 									<div class="panel-heading">
 										<a href="<?php echo site_url('requested_control/index') ?>" class="pull-right">See All</a>
@@ -295,12 +296,12 @@
 
 
 									<div class="panel-body">
-										<?php $count_friend_list=1; 
+										<?php $count_friend_list=1;
 										foreach ($friend_list2->result() as $row)
-										{ 
+										{
 											if($count_friend_list== 9)
 												break;
-											if($count_friend_list%3 == 0) 
+											if($count_friend_list%3 == 0)
 											{ ?>
 												<div class="row">
 											<?php }
@@ -316,21 +317,21 @@
 														</article>
 													</a>
 												</div>
-											<?php } 
+											<?php }
 											else if ($count_friend_list%3 != 0)
-											{ 
+											{
 												continue;
 											} ?>
-											<?php if($count_friend_list%3 == 0) 
+											<?php if($count_friend_list%3 == 0)
 											{ ?>
 												</div>
 												</br>
 											<?php }
-											$count_friend_list++; 
-										} ?>			
+											$count_friend_list++;
+										} ?>
 									</div>
 								</div>
-								</div>	
+								</div>
 							</div>
 
 

@@ -113,9 +113,9 @@
 									<!-- main col left -->
 									<div class="col-sm-5">
 
-										<div class="panel panel-success">
+										<div class="panel panel-primary">
 											<div class="panel-heading">
-												Map
+												Current Location
 											</div>
 											<div class="panel-body">
 												<div id="map-canvas" class="span12"></div>

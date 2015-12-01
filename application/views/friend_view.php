@@ -116,12 +116,12 @@
 
 									<!-- main col left -->
 									<div class="col-sm-5">
-										<div class="panel panel-info">
-											
+										<div class="panel panel-primary">
+
 											<?php foreach ($friend->result() as $column)
 											{ ?>
 												<div class="panel-heading">
-													<?php echo $column->name; ?>
+													<span style="font-size:2em"><b><?php echo $column->name; ?></b></span>
 												</div>
 													<div class="panel-body">
 														<div class="col-md-4">
@@ -144,7 +144,7 @@
 																</a>
 															</div>
 														</div>
-														
+
 													</div>
 													<div class="col-md-offset-1 col-md-7">
 														<p>
