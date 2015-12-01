@@ -199,9 +199,6 @@
 															E-mail : <?php echo $column->email; ?>
 														</p>
 														<p>
-															Specification :
-														</p>
-														<p>
 															Area : <?php echo $column->address; ?>
 														</p>
 														<p>
@@ -244,11 +241,11 @@
 																		</div>
 																	</div>
 																</div>
-																
+
 																<div class="panel panel-primary">
 
 																	<div class="panel-heading">
-																		<a href="<?php echo site_url('requesting_friend_control/index/'.$id) ?>" class="pull-right">See All</a>
+																		<a href="<?php echo site_url('requesting_friend_control/index/'.$id) ?>" class="pull-right" style="color:#FFFFFF">See All</a>
 																		Requesting Friend
 																	</div>
 																	<div class="panel panel-default">
@@ -291,11 +288,11 @@
 																	</div>
 																</div>
 																</div>
-																
+
 																<div class="panel panel-primary">
 
 																	<div class="panel-heading">
-																		<a href="<?php echo site_url('requested_friend_control/index/'.$id) ?>" class="pull-right">See All</a>
+																		<a href="<?php echo site_url('requested_friend_control/index/'.$id) ?>" class="pull-right" style="color:#FFFFFF">See All</a>
 																		Requested Friend
 																	</div>
 																	<div class="panel panel-default">
